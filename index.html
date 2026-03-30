@@ -15,11 +15,11 @@
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================
-       CSS Reset
+       Reset
        ============================================ */
     *, *::before, *::after {
       margin: 0;
@@ -40,80 +40,63 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    img, svg {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input, textarea {
-      font: inherit;
-      color: inherit;
-    }
-
-    ul, ol {
-      list-style: none;
-    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; color: inherit; }
+    ul, ol { list-style: none; }
 
     /* ============================================
-       Design Tokens (Elegant-based, monochrome)
+       Tokens (Elegant + zinc monochrome)
        ============================================ */
     :root {
-      /* Monochrome palette */
-      --color-black: #111827;
-      --color-gray-900: #1F2937;
-      --color-gray-800: #374151;
-      --color-gray-700: #4B5563;
-      --color-gray-500: #6B7280;
-      --color-gray-400: #9CA3AF;
-      --color-gray-300: #D1D5DB;
-      --color-gray-200: #E5E7EB;
-      --color-gray-100: #F3F4F6;
-      --color-surface: #F9FAFB;
-      --color-white: #FFFFFF;
-      --color-error: #DC2626;
+      --zinc-950: #09090b;
+      --zinc-900: #18181b;
+      --zinc-800: #27272a;
+      --zinc-700: #3f3f46;
+      --zinc-600: #52525b;
+      --zinc-500: #71717a;
+      --zinc-400: #a1a1aa;
+      --zinc-300: #d4d4d8;
+      --zinc-200: #e4e4e7;
+      --zinc-100: #f4f4f5;
+      --zinc-50: #fafafa;
+      --white: #ffffff;
+      --color-error: #dc2626;
 
-      /* Glass tokens */
-      --glass-bg: rgba(255, 255, 255, 0.65);
-      --glass-border: rgba(255, 255, 255, 0.4);
-      --glass-blur: 24px;
-
-      /* Typography — Elegant scale: 14/16/18/24/32/40 */
       --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Elegant type scale: 14/16/18/24/32/40 */
+      --text-xs: 0.8125rem;   /* 13px */
       --text-sm: 0.875rem;    /* 14px */
       --text-base: 1rem;      /* 16px */
       --text-lg: 1.125rem;    /* 18px */
       --text-xl: 1.5rem;      /* 24px */
       --text-2xl: 2rem;       /* 32px */
       --text-3xl: 2.5rem;     /* 40px */
+      --text-4xl: 3rem;       /* 48px */
+      --text-5xl: 3.75rem;    /* 60px */
 
-      /* Spacing — Elegant scale: 4/8/12/16/24/32 */
+      /* Elegant spacing: 4/8/12/16/24/32 */
       --space-1: 4px;
       --space-2: 8px;
       --space-3: 12px;
       --space-4: 16px;
+      --space-5: 20px;
       --space-6: 24px;
       --space-8: 32px;
+      --space-10: 40px;
       --space-12: 48px;
       --space-16: 64px;
       --space-20: 80px;
-      --space-24: 96px;
 
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 20px;
-      --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --transition: 0.2s ease;
     }
 
-    /* ============================================
-       Selection
-       ============================================ */
     ::selection {
-      background: rgba(17, 24, 39, 0.1);
+      background: rgba(9, 9, 11, 0.08);
     }
 
     /* ============================================
@@ -125,124 +108,73 @@
       left: var(--space-4);
       z-index: 9999;
       padding: var(--space-2) var(--space-4);
-      background: var(--color-black);
-      color: var(--color-white);
+      background: var(--zinc-900);
+      color: var(--white);
       font-family: var(--font);
       font-weight: 500;
       font-size: var(--text-sm);
       border-radius: var(--radius-sm);
-      transition: top var(--transition-base);
+      transition: top var(--transition);
     }
-
-    .skip-link:focus {
-      top: var(--space-4);
-    }
+    .skip-link:focus { top: var(--space-4); }
 
     /* ============================================
-       Focus-Visible (Elegant: visible focus states)
+       Focus-Visible
        ============================================ */
     a:focus-visible,
     input:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--color-black);
+      outline: 2px solid var(--zinc-900);
       outline-offset: 2px;
     }
 
     /* ============================================
-       Base Typography
+       Page Background + Grid Pattern
        ============================================ */
     body {
       font-family: var(--font);
       font-weight: 400;
-      color: var(--color-black);
-      background-color: var(--color-surface);
+      color: var(--zinc-900);
+      background-color: var(--zinc-50);
+      background-image:
+        linear-gradient(var(--zinc-200) 1px, transparent 1px),
+        linear-gradient(90deg, var(--zinc-200) 1px, transparent 1px);
+      background-size: 64px 64px;
+      background-position: -1px -1px;
     }
 
     /* ============================================
-       Hero Section
+       Container
        ============================================ */
-    .hero {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: var(--space-24) var(--space-8);
-      padding-bottom: 160px;
-      background: linear-gradient(170deg, var(--color-black) 0%, var(--color-gray-900) 100%);
-      overflow: hidden;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      max-width: 540px;
-    }
-
-    /* Monochrome ambient glow — gives glassmorphism something to frost */
-    .hero-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .hero-glow--1 {
-      width: 400px;
-      height: 400px;
-      top: 20%;
-      left: -8%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
-    }
-
-    .hero-glow--2 {
-      width: 500px;
-      height: 500px;
-      bottom: -10%;
-      right: -10%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
-    }
-
-    .hero-glow--3 {
-      width: 300px;
-      height: 300px;
-      bottom: 30%;
-      left: 30%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
-    }
-
-    /* Logo */
-    .hero-logo {
+    .container {
       width: 100%;
-      max-width: 240px;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* ============================================
+       Page Layout
+       ============================================ */
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: var(--space-16) 0 var(--space-12);
+    }
+
+    /* ============================================
+       Logo
+       ============================================ */
+    .logo {
+      width: 160px;
       margin-bottom: var(--space-12);
     }
 
-    .hero-logo svg {
+    .logo svg {
       width: 100%;
       height: auto;
-    }
-
-    /* Tagline — Elegant h1: 40px */
-    .hero-tagline {
-      font-weight: 300;
-      font-size: clamp(var(--text-xl), 4.5vw, var(--text-3xl));
-      color: var(--color-white);
-      margin-bottom: var(--space-4);
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    /* Teaser — Elegant body: 16px */
-    .hero-teaser {
-      font-weight: 400;
-      font-size: var(--text-base);
-      color: var(--color-gray-500);
-      line-height: 1.6;
     }
 
     /* ============================================
@@ -254,98 +186,91 @@
     }
 
     @keyframes star-pulse {
-      0%, 100% { opacity: 0.8; transform: scale(1); }
+      0%, 100% { opacity: 0.7; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.05); }
     }
 
     /* ============================================
-       Waitlist Section — Glassmorphism Card
+       Hero Card (glassmorphism)
        ============================================ */
-    #waitlist {
+    .hero-card {
       position: relative;
-      z-index: 3;
-      margin-top: -56px;
-      padding: 0 var(--space-6) var(--space-16);
-      display: flex;
-      justify-content: center;
-    }
-
-    .glass-card {
       width: 100%;
-      max-width: 460px;
-      padding: var(--space-8);
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      -webkit-backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
+      max-width: 680px;
+      padding: var(--space-12) var(--space-10);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--zinc-200);
       border-radius: var(--radius-lg);
-      box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 2px 8px rgba(0, 0, 0, 0.04),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
       text-align: center;
+      overflow: hidden;
     }
 
     @supports not (backdrop-filter: blur(1px)) {
-      .glass-card {
+      .hero-card {
         background: rgba(255, 255, 255, 0.92);
       }
     }
 
-    .glass-card__heading {
-      font-weight: 500;
-      font-size: var(--text-xl);
-      color: var(--color-black);
-      margin-bottom: var(--space-1);
+    .hero-card__tagline {
+      font-weight: 300;
+      font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--zinc-900);
+      margin-bottom: var(--space-4);
     }
 
-    .glass-card__subtext {
+    .hero-card__teaser {
       font-weight: 400;
-      font-size: var(--text-sm);
-      color: var(--color-gray-500);
+      font-size: var(--text-base);
+      color: var(--zinc-500);
       line-height: 1.6;
-      margin-bottom: var(--space-6);
+      max-width: 420px;
+      margin: 0 auto var(--space-10);
     }
 
     /* ============================================
-       Waitlist Form (Elegant: all interaction states)
+       Waitlist Form (inside hero card)
        ============================================ */
     .waitlist-form {
       display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
+      gap: var(--space-2);
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     /* Input — states: default, hover, focus-visible, error, disabled */
     .waitlist-form__input {
-      width: 100%;
+      flex: 1;
       min-height: 44px;
       padding: var(--space-3) var(--space-4);
-      background: var(--color-white);
-      color: var(--color-black);
-      border: 1.5px solid var(--color-gray-200);
+      background: var(--white);
+      color: var(--zinc-900);
+      border: 1px solid var(--zinc-200);
       border-radius: var(--radius-sm);
-      font-size: var(--text-base);
-      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+      font-size: var(--text-sm);
+      transition: border-color var(--transition), box-shadow var(--transition);
     }
 
     .waitlist-form__input::placeholder {
-      color: var(--color-gray-400);
+      color: var(--zinc-400);
     }
 
     .waitlist-form__input:hover {
-      border-color: var(--color-gray-300);
+      border-color: var(--zinc-300);
     }
 
     .waitlist-form__input:focus-visible {
-      border-color: var(--color-black);
-      box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
+      border-color: var(--zinc-900);
+      box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.06);
       outline: none;
     }
 
     .waitlist-form__input.has-error {
       border-color: var(--color-error);
-      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.06);
     }
 
     .waitlist-form__input:disabled {
@@ -356,31 +281,29 @@
     /* Button — states: default, hover, active, focus-visible, disabled, loading */
     .waitlist-form__btn {
       position: relative;
-      width: 100%;
       min-height: 44px;
-      padding: var(--space-3) var(--space-6);
-      background: var(--color-black);
-      color: var(--color-white);
+      padding: var(--space-3) var(--space-5);
+      background: var(--zinc-900);
+      color: var(--white);
       border: none;
       border-radius: var(--radius-sm);
       font-weight: 500;
-      font-size: var(--text-base);
-      letter-spacing: 0.01em;
+      font-size: var(--text-sm);
+      white-space: nowrap;
       cursor: pointer;
-      transition: background var(--transition-base), opacity var(--transition-base);
+      transition: background var(--transition);
     }
 
     .waitlist-form__btn:hover {
-      background: var(--color-gray-800);
+      background: var(--zinc-800);
     }
 
     .waitlist-form__btn:active {
-      background: var(--color-black);
-      transform: scale(0.99);
+      background: var(--zinc-950);
     }
 
     .waitlist-form__btn:focus-visible {
-      outline: 2px solid var(--color-black);
+      outline: 2px solid var(--zinc-900);
       outline-offset: 2px;
     }
 
@@ -390,7 +313,6 @@
       pointer-events: none;
     }
 
-    /* Loading state */
     .waitlist-form__btn.loading .btn-text {
       visibility: hidden;
     }
@@ -400,11 +322,11 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 18px;
-      height: 18px;
-      margin: -9px 0 0 -9px;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
       border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top-color: var(--color-white);
+      border-top-color: var(--white);
       border-radius: 50%;
       animation: spinner 0.6s linear infinite;
     }
@@ -418,35 +340,61 @@
       font-size: var(--text-sm);
       color: var(--color-error);
       text-align: left;
-      margin: 0;
+      margin-top: var(--space-2);
     }
 
     /* Success */
     .waitlist-success {
-      padding: var(--space-4) 0 0;
+      padding: var(--space-2) 0;
     }
 
     .waitlist-success__text {
       font-weight: 400;
       font-size: var(--text-base);
-      color: var(--color-gray-500);
-      line-height: 1.5;
+      color: var(--zinc-500);
+    }
+
+    /* ============================================
+       Brand Values (below the card)
+       ============================================ */
+    .values {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-8);
+      margin-top: var(--space-10);
+      padding: 0 var(--space-6);
+    }
+
+    .values__item {
+      font-weight: 400;
+      font-size: var(--text-xs);
+      color: var(--zinc-400);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     /* ============================================
        Footer
        ============================================ */
     .site-footer {
-      padding: var(--space-12) var(--space-8) var(--space-8);
+      width: 100%;
+      max-width: 680px;
+      margin: auto auto 0;
+      padding: var(--space-8) var(--space-6) var(--space-6);
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      gap: var(--space-4);
+      border-top: 1px solid var(--zinc-200);
+    }
+
+    .footer-copy {
+      font-size: var(--text-xs);
+      color: var(--zinc-400);
     }
 
     .footer-socials {
       display: flex;
-      gap: var(--space-6);
+      gap: var(--space-4);
       align-items: center;
     }
 
@@ -454,86 +402,58 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 44px;
-      min-height: 44px;
-      color: var(--color-gray-400);
-      transition: color var(--transition-base);
+      min-width: 36px;
+      min-height: 36px;
+      color: var(--zinc-400);
+      transition: color var(--transition);
     }
 
     .footer-socials a:hover {
-      color: var(--color-black);
-    }
-
-    .footer-socials a:focus-visible {
-      outline: 2px solid var(--color-black);
-      outline-offset: 4px;
-      border-radius: 2px;
+      color: var(--zinc-900);
     }
 
     .footer-socials svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       display: block;
     }
 
-    .footer-copy {
-      font-size: 0.8125rem;
-      color: var(--color-gray-400);
-      letter-spacing: 0.02em;
-    }
-
     /* ============================================
-       Responsive — Tablet (768px)
+       Responsive
        ============================================ */
-    @media (max-width: 768px) {
-      .hero {
-        padding: var(--space-16) var(--space-6);
-        padding-bottom: 120px;
+    @media (max-width: 640px) {
+      .page {
+        padding: var(--space-10) 0 var(--space-8);
       }
 
-      .hero-logo {
-        max-width: 200px;
-      }
-
-      #waitlist {
-        margin-top: -48px;
-      }
-    }
-
-    /* ============================================
-       Responsive — Mobile (480px)
-       ============================================ */
-    @media (max-width: 480px) {
-      .hero {
-        padding: var(--space-12) var(--space-4);
-        padding-bottom: 100px;
-      }
-
-      .hero-tagline {
-        font-size: var(--text-xl);
-      }
-
-      .hero-logo {
-        max-width: 170px;
+      .logo {
+        width: 130px;
         margin-bottom: var(--space-8);
       }
 
-      #waitlist {
-        margin-top: -40px;
-        padding-left: var(--space-4);
-        padding-right: var(--space-4);
+      .hero-card {
+        margin: 0 var(--space-4);
+        padding: var(--space-8) var(--space-6);
       }
 
-      .glass-card {
-        padding: var(--space-6);
+      .hero-card__tagline {
+        font-size: var(--text-xl);
       }
 
-      #teaser {
-        padding: var(--space-16) var(--space-4);
+      .waitlist-form {
+        flex-direction: column;
+      }
+
+      .values {
+        gap: var(--space-4);
+        flex-wrap: wrap;
       }
 
       .site-footer {
-        padding: var(--space-8) var(--space-4) var(--space-6);
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+        margin: var(--space-10) auto 0;
       }
     }
 
@@ -546,16 +466,8 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      .logo-star {
-        animation: none;
-        opacity: 1;
-      }
-
+      html { scroll-behavior: auto; }
+      .logo-star { animation: none; opacity: 1; }
     }
   </style>
 </head>
@@ -563,49 +475,33 @@
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <main id="main">
+  <main id="main" class="page">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero" aria-label="Welcome to Umpra">
+    <!-- Logo -->
+    <div class="logo" role="img" aria-label="Umpra logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 767.75 183.32">
+        <defs><style>.umpra-fill { fill: #18181b; }</style></defs>
+        <g>
+          <path class="umpra-fill" d="M264.02,36.58v55.45c0,6.02-1.15,10.4-3.42,13.15-2.28,2.75-5.34,4.12-9.24,4.12-8.3,0-12.45-5.36-12.45-16.06v-56.66h-34.76v63.88c0,12.45,3.16,22.01,9.44,28.63,6.3,6.62,14.8,9.95,25.53,9.95,5.34,0,10.14-1.19,14.35-3.52,4.23-2.35,7.81-5.66,10.76-9.95v11.46h33.95V36.58h-34.16Z"/>
+          <path class="umpra-fill" d="M453.47,44.62c-6.02-6.7-14.73-10.05-26.11-10.05-6.17,0-11.76,1.37-16.78,4.12-5.02,2.75-9.09,6.6-12.15,11.55-5.49-10.44-15.01-15.67-28.54-15.67-5.62,0-10.72,1.2-15.27,3.61-4.55,2.43-8.37,5.91-11.44,10.46v-12.06h-33.95v100.45h34.14v-55.25c0-6.02,1.19-10.48,3.52-13.36,2.35-2.88,5.46-4.33,9.35-4.33,4.29,0,7.39,1.41,9.35,4.21,1.94,2.82,2.9,6.83,2.9,12.06v56.66h34.56v-55.25c0-6.02,1.15-10.48,3.42-13.36,2.28-2.88,5.36-4.33,9.24-4.33,4.42,0,7.56,1.41,9.44,4.21,1.88,2.82,2.82,6.83,2.82,12.06v56.66h34.56v-64.09c0-12.19-3.03-21.63-9.05-28.33Z"/>
+          <path class="umpra-fill" d="M574.91,65.01c-2.48-6.49-5.83-11.98-10.04-16.48-4.21-4.48-9.07-7.92-14.56-10.35-5.49-2.41-11.19-3.61-17.08-3.61-6.43,0-11.85,1.28-16.27,3.82s-7.98,5.96-10.65,10.25v-12.06h-33.56v146.65h33.77v-56.64c5.76,8.3,14.86,12.45,27.31,12.45,5.76,0,11.32-1.19,16.67-3.52,5.36-2.35,10.12-5.76,14.28-10.25,4.14-4.48,7.49-9.97,10.04-16.48,2.54-6.49,3.82-13.83,3.82-21.99s-1.24-15.29-3.72-21.8ZM539.15,101.58c-3.82,3.95-8.62,5.93-14.37,5.93s-10.48-2.01-14.16-6.02c-3.67-4.03-5.51-8.97-5.51-14.88s1.84-10.84,5.51-14.86c3.69-4.03,8.41-6.02,14.16-6.02s10.55,1.98,14.37,5.93c3.82,3.95,5.72,8.94,5.72,14.95s-1.9,11.02-5.72,14.97Z"/>
+          <path class="umpra-fill" d="M646.73,36.58c-6.83,0-12.42,1.54-16.78,4.63-4.35,3.07-7.66,7.35-9.93,12.85v-17.48h-33.16v100.45h33.35v-46.61c0-3.87.28-7.13.81-9.74.53-2.61,1.47-4.68,2.82-6.23,1.34-1.54,3.1-2.61,5.32-3.22,2.2-.6,4.91-.9,8.13-.9h20.69v-33.75h-11.25Z"/>
+          <path class="umpra-fill logo-star" d="M733.52,36.58v11.25c-2.82-4.16-6.4-7.39-10.76-9.74-4.35-2.33-9.67-3.52-15.97-3.52-5.89,0-11.59,1.2-17.06,3.61-5.51,2.43-10.36,5.87-14.58,10.35-4.21,4.5-7.6,9.99-10.14,16.48-2.54,6.51-3.82,13.77-3.82,21.8s1.28,15.5,3.82,21.99c2.54,6.51,5.93,12,10.14,16.48,4.21,4.5,9.01,7.9,14.37,10.25,5.34,2.33,10.91,3.52,16.67,3.52,6.17,0,11.53-1.2,16.08-3.63,4.55-2.41,8.3-5.81,11.25-10.23v11.85h34.14V36.58h-34.14ZM729.68,92.43l-2.73,1.07c-6.3,2.46-11.21,7.56-13.45,13.96l-.77,2.22c-1.88,5.4-9.52,5.4-11.4,0l-.77-2.22c-2.24-6.4-7.15-11.49-13.45-13.96l-2.73-1.07c-5.12-2.01-5.12-9.24,0-11.25l2.88-1.13c6.21-2.43,11.04-7.45,13.24-13.75l.83-2.37c1.88-5.4,9.52-5.4,11.4,0l.77,2.22c2.24,6.4,7.15,11.49,13.45,13.96l2.73,1.07c5.12,2.01,5.12,9.24,0,11.25Z"/>
+        </g>
+        <g>
+          <path class="umpra-fill" d="M86.24,7.54c-16.91,14.09,17.89,42.27,28.7,48.09,12.37,6.66,40.02,17.61,46.87-2.17,5.08-14.67-8.21-36.97-22.03-44.59-15.29-8.44-41.37-11.45-53.54-1.32Z"/>
+          <path class="umpra-fill" d="M7.73,74.74c13.21-7.29,29.43,17.55,34.36,32.72,8.56,26.36,4.52,42.9-6.93,43.49-11.46.59-25.34-11.57-31.67-30.12C-2.85,102.27-.03,79.01,7.73,74.74Z"/>
+          <path class="umpra-fill" d="M158.99,82.5c7.7,21.05-9.32,47.18-27.42,62.53-16.87,14.31-49.58,23.58-66.39,14.92-20.93-10.78,13.01-47.92,25.9-58.86,13.04-11.06,59.43-41.77,67.9-18.58Z"/>
+          <path class="umpra-fill" d="M63.72,2c10.77,1.24,12.67,10.09-3.33,28.75-11.88,13.86-33.2,32.63-46.75,28.08-6.84-2.3-4.46-23.38,8.83-37.89C35.76,6.45,52.96.76,63.72,2Z"/>
+        </g>
+      </svg>
+    </div>
 
-      <!-- Subtle ambient glow for glassmorphism depth -->
-      <div class="hero-glow hero-glow--1" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow--2" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow--3" aria-hidden="true"></div>
-
-      <div class="hero-content">
-        <!-- Inline Logo SVG -->
-        <div class="hero-logo" role="img" aria-label="Umpra logo">
-          <svg id="umpra-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 767.75 183.32">
-            <defs>
-              <style>.umpra-fill { fill: #fff; }</style>
-            </defs>
-            <g>
-              <path class="umpra-fill" d="M264.02,36.58v55.45c0,6.02-1.15,10.4-3.42,13.15-2.28,2.75-5.34,4.12-9.24,4.12-8.3,0-12.45-5.36-12.45-16.06v-56.66h-34.76v63.88c0,12.45,3.16,22.01,9.44,28.63,6.3,6.62,14.8,9.95,25.53,9.95,5.34,0,10.14-1.19,14.35-3.52,4.23-2.35,7.81-5.66,10.76-9.95v11.46h33.95V36.58h-34.16Z"/>
-              <path class="umpra-fill" d="M453.47,44.62c-6.02-6.7-14.73-10.05-26.11-10.05-6.17,0-11.76,1.37-16.78,4.12-5.02,2.75-9.09,6.6-12.15,11.55-5.49-10.44-15.01-15.67-28.54-15.67-5.62,0-10.72,1.2-15.27,3.61-4.55,2.43-8.37,5.91-11.44,10.46v-12.06h-33.95v100.45h34.14v-55.25c0-6.02,1.19-10.48,3.52-13.36,2.35-2.88,5.46-4.33,9.35-4.33,4.29,0,7.39,1.41,9.35,4.21,1.94,2.82,2.9,6.83,2.9,12.06v56.66h34.56v-55.25c0-6.02,1.15-10.48,3.42-13.36,2.28-2.88,5.36-4.33,9.24-4.33,4.42,0,7.56,1.41,9.44,4.21,1.88,2.82,2.82,6.83,2.82,12.06v56.66h34.56v-64.09c0-12.19-3.03-21.63-9.05-28.33Z"/>
-              <path class="umpra-fill" d="M574.91,65.01c-2.48-6.49-5.83-11.98-10.04-16.48-4.21-4.48-9.07-7.92-14.56-10.35-5.49-2.41-11.19-3.61-17.08-3.61-6.43,0-11.85,1.28-16.27,3.82s-7.98,5.96-10.65,10.25v-12.06h-33.56v146.65h33.77v-56.64c5.76,8.3,14.86,12.45,27.31,12.45,5.76,0,11.32-1.19,16.67-3.52,5.36-2.35,10.12-5.76,14.28-10.25,4.14-4.48,7.49-9.97,10.04-16.48,2.54-6.49,3.82-13.83,3.82-21.99s-1.24-15.29-3.72-21.8ZM539.15,101.58c-3.82,3.95-8.62,5.93-14.37,5.93s-10.48-2.01-14.16-6.02c-3.67-4.03-5.51-8.97-5.51-14.88s1.84-10.84,5.51-14.86c3.69-4.03,8.41-6.02,14.16-6.02s10.55,1.98,14.37,5.93c3.82,3.95,5.72,8.94,5.72,14.95s-1.9,11.02-5.72,14.97Z"/>
-              <path class="umpra-fill" d="M646.73,36.58c-6.83,0-12.42,1.54-16.78,4.63-4.35,3.07-7.66,7.35-9.93,12.85v-17.48h-33.16v100.45h33.35v-46.61c0-3.87.28-7.13.81-9.74.53-2.61,1.47-4.68,2.82-6.23,1.34-1.54,3.1-2.61,5.32-3.22,2.2-.6,4.91-.9,8.13-.9h20.69v-33.75h-11.25Z"/>
-              <path class="umpra-fill logo-star" d="M733.52,36.58v11.25c-2.82-4.16-6.4-7.39-10.76-9.74-4.35-2.33-9.67-3.52-15.97-3.52-5.89,0-11.59,1.2-17.06,3.61-5.51,2.43-10.36,5.87-14.58,10.35-4.21,4.5-7.6,9.99-10.14,16.48-2.54,6.51-3.82,13.77-3.82,21.8s1.28,15.5,3.82,21.99c2.54,6.51,5.93,12,10.14,16.48,4.21,4.5,9.01,7.9,14.37,10.25,5.34,2.33,10.91,3.52,16.67,3.52,6.17,0,11.53-1.2,16.08-3.63,4.55-2.41,8.3-5.81,11.25-10.23v11.85h34.14V36.58h-34.14ZM729.68,92.43l-2.73,1.07c-6.3,2.46-11.21,7.56-13.45,13.96l-.77,2.22c-1.88,5.4-9.52,5.4-11.4,0l-.77-2.22c-2.24-6.4-7.15-11.49-13.45-13.96l-2.73-1.07c-5.12-2.01-5.12-9.24,0-11.25l2.88-1.13c6.21-2.43,11.04-7.45,13.24-13.75l.83-2.37c1.88-5.4,9.52-5.4,11.4,0l.77,2.22c2.24,6.4,7.15,11.49,13.45,13.96l2.73,1.07c5.12,2.01,5.12,9.24,0,11.25Z"/>
-            </g>
-            <g>
-              <path class="umpra-fill" d="M86.24,7.54c-16.91,14.09,17.89,42.27,28.7,48.09,12.37,6.66,40.02,17.61,46.87-2.17,5.08-14.67-8.21-36.97-22.03-44.59-15.29-8.44-41.37-11.45-53.54-1.32Z"/>
-              <path class="umpra-fill" d="M7.73,74.74c13.21-7.29,29.43,17.55,34.36,32.72,8.56,26.36,4.52,42.9-6.93,43.49-11.46.59-25.34-11.57-31.67-30.12C-2.85,102.27-.03,79.01,7.73,74.74Z"/>
-              <path class="umpra-fill" d="M158.99,82.5c7.7,21.05-9.32,47.18-27.42,62.53-16.87,14.31-49.58,23.58-66.39,14.92-20.93-10.78,13.01-47.92,25.9-58.86,13.04-11.06,59.43-41.77,67.9-18.58Z"/>
-              <path class="umpra-fill" d="M63.72,2c10.77,1.24,12.67,10.09-3.33,28.75-11.88,13.86-33.2,32.63-46.75,28.08-6.84-2.3-4.46-23.38,8.83-37.89C35.76,6.45,52.96.76,63.72,2Z"/>
-            </g>
-          </svg>
-        </div>
-
-        <h1 class="hero-tagline">Your everyday, on your terms.</h1>
-        <p class="hero-teaser">Something thoughtful is taking shape. Stay close.</p>
-      </div>
-    </section>
-
-    <!-- Waitlist Section -->
-    <section id="waitlist" aria-label="Join the waitlist">
-      <div class="glass-card">
-        <h2 class="glass-card__heading">Be the first to know</h2>
-        <p class="glass-card__subtext">Join the waitlist and we'll let you know when Umpra is ready.</p>
+    <!-- Hero Card -->
+    <div class="container">
+      <div class="hero-card">
+        <h1 class="hero-card__tagline">Your everyday,<br>on your terms.</h1>
+        <p class="hero-card__teaser">Something thoughtful is taking shape. A wellness brand designed around the small daily moments that matter — and making them yours.</p>
 
         <form id="waitlist-form" class="waitlist-form" novalidate>
           <input
@@ -618,27 +514,35 @@
             aria-label="Email address"
             aria-describedby="error-msg"
           >
-          <p id="error-msg" class="waitlist-form__error" hidden aria-live="polite"></p>
           <button type="submit" id="submit-btn" class="waitlist-form__btn">
-            <span class="btn-text">Join the Waitlist</span>
+            <span class="btn-text">Join Waitlist</span>
           </button>
         </form>
+        <p id="error-msg" class="waitlist-form__error" hidden aria-live="polite"></p>
 
         <div id="success-msg" class="waitlist-success" hidden>
           <p class="waitlist-success__text">You're on the list. We'll be in touch soon.</p>
         </div>
 
         <noscript>
-          <p class="glass-card__subtext" style="margin-top: var(--space-4); margin-bottom: 0;">Please enable JavaScript to join the waitlist.</p>
+          <p style="font-size: var(--text-sm); color: var(--zinc-500); margin-top: var(--space-4);">Please enable JavaScript to join the waitlist.</p>
         </noscript>
       </div>
-    </section>
+    </div>
 
+    <!-- Brand Values -->
+    <div class="values" aria-label="Brand values">
+      <span class="values__item">Independence</span>
+      <span class="values__item">Dignity</span>
+      <span class="values__item">Care</span>
+      <span class="values__item">Simplicity</span>
+    </div>
 
   </main>
 
   <!-- Footer -->
   <footer class="site-footer">
+    <p class="footer-copy">&copy; 2026 Umpra</p>
     <nav class="footer-socials" aria-label="Social links">
       <a href="#" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -650,7 +554,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6L12 13 2 6"/></svg>
       </a>
     </nav>
-    <p class="footer-copy">&copy; 2026 Umpra</p>
   </footer>
 
   <script>
@@ -664,7 +567,6 @@
       var submitBtn = document.getElementById('submit-btn');
       var errorMsg = document.getElementById('error-msg');
       var successMsg = document.getElementById('success-msg');
-
       var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       function showError(msg) {
@@ -679,15 +581,14 @@
         emailInput.classList.remove('has-error');
       }
 
-      function setLoading(loading) {
-        submitBtn.disabled = loading;
-        submitBtn.classList.toggle('loading', loading);
+      function setLoading(on) {
+        submitBtn.disabled = on;
+        submitBtn.classList.toggle('loading', on);
       }
 
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
         clearError();
-
         var email = emailInput.value.trim();
 
         if (!EMAIL_RE.test(email)) {
@@ -710,7 +611,6 @@
             headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify({ email: email })
           });
-
           form.hidden = true;
           successMsg.hidden = false;
         } catch (err) {
@@ -723,7 +623,6 @@
         if (!errorMsg.hidden) clearError();
       });
     })();
-
   </script>
 
 </body>

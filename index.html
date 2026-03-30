@@ -12,10 +12,10 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://umpra.com">
 
-  <!-- Google Fonts: Cormorant Garamond + Outfit -->
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================
@@ -63,25 +63,19 @@
        Custom Properties
        ============================================ */
     :root {
-      --color-primary: #C85A2B;
-      --color-primary-light: #E8804A;
-      --color-primary-dark: #A04520;
-      --color-secondary: #1E2A4A;
-      --color-secondary-light: #2A3A62;
-      --color-surface: #FDF6F0;
-      --color-surface-alt: #F5EDE4;
-      --color-text-light: #FDF6F0;
-      --color-text-dark: #1E2A4A;
-      --color-text-muted: #6B7A94;
+      --color-black: #111111;
+      --color-dark: #1A1A1A;
+      --color-gray-700: #333333;
+      --color-gray-500: #666666;
+      --color-gray-400: #888888;
+      --color-gray-300: #AAAAAA;
+      --color-gray-200: #D4D4D4;
+      --color-gray-100: #EEEEEE;
+      --color-surface: #F8F8F6;
+      --color-white: #FFFFFF;
+      --color-error: #B91C1C;
 
-      --glass-bg: rgba(253, 246, 240, 0.75);
-      --glass-border: rgba(255, 255, 255, 0.35);
-      --glass-shadow: rgba(30, 42, 74, 0.12);
-      --color-error: #C8432B;
-      --glass-blur: 20px;
-
-      --font-heading: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Outfit', sans-serif;
+      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
       --space-1: 4px;
       --space-2: 8px;
@@ -91,20 +85,20 @@
       --space-8: 32px;
       --space-12: 48px;
       --space-16: 64px;
+      --space-20: 80px;
       --space-24: 96px;
 
       --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition-base: 0.2s ease;
     }
 
     /* ============================================
-       Selection Color
+       Selection
        ============================================ */
     ::selection {
-      background: rgba(200, 90, 43, 0.2);
-      color: var(--color-text-dark);
+      background: rgba(17, 17, 17, 0.12);
     }
 
     /* ============================================
@@ -116,9 +110,9 @@
       left: var(--space-4);
       z-index: 9999;
       padding: var(--space-2) var(--space-4);
-      background: var(--color-primary);
-      color: var(--color-surface);
-      font-family: var(--font-body);
+      background: var(--color-black);
+      color: var(--color-white);
+      font-family: var(--font);
       font-weight: 500;
       font-size: 0.875rem;
       border-radius: var(--radius-sm);
@@ -130,12 +124,12 @@
     }
 
     /* ============================================
-       Focus-Visible Global
+       Focus-Visible
        ============================================ */
     a:focus-visible,
     input:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--color-primary);
+      outline: 2px solid var(--color-black);
       outline-offset: 2px;
     }
 
@@ -143,47 +137,38 @@
        Base Typography
        ============================================ */
     body {
-      font-family: var(--font-body);
-      font-weight: 300;
-      color: var(--color-text-dark);
+      font-family: var(--font);
+      font-weight: 400;
+      color: var(--color-dark);
       background-color: var(--color-surface);
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: var(--font-heading);
-      line-height: 1.2;
     }
 
     /* ============================================
        Hero Section
        ============================================ */
     .hero {
-      position: relative;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(160deg, #1E2A4A 0%, #162038 50%, #1A2542 100%);
-      overflow: hidden;
-      padding: var(--space-8);
+      min-height: 100svh;
+      padding: var(--space-16) var(--space-8) var(--space-20);
+      background: var(--color-dark);
+      text-align: center;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      max-width: 600px;
+      max-width: 520px;
     }
 
     /* Logo */
     .hero-logo {
       width: 100%;
-      max-width: 280px;
-      margin-bottom: var(--space-16);
+      max-width: 240px;
+      margin-bottom: var(--space-12);
     }
 
     .hero-logo svg {
@@ -193,21 +178,20 @@
 
     /* Tagline */
     .hero-tagline {
-      font-family: var(--font-heading);
+      font-family: var(--font);
       font-weight: 300;
-      font-size: clamp(2rem, 5.5vw, 3rem);
-      color: var(--color-surface);
-      margin-bottom: var(--space-6);
-      line-height: 1.25;
-      letter-spacing: -0.01em;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--color-white);
+      margin-bottom: var(--space-4);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
     }
 
     /* Teaser */
     .hero-teaser {
-      font-family: var(--font-body);
       font-weight: 400;
-      font-size: clamp(0.875rem, 2vw, 1rem);
-      color: var(--color-text-muted);
+      font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+      color: var(--color-gray-400);
       line-height: 1.6;
     }
 
@@ -221,7 +205,7 @@
 
     @keyframes star-pulse {
       0%, 100% {
-        opacity: 0.85;
+        opacity: 0.8;
         transform: scale(1);
       }
       50% {
@@ -231,146 +215,176 @@
     }
 
     /* ============================================
-       Floating Orbs
-       ============================================ */
-    .orbs-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 120%;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      will-change: transform;
-    }
-
-    .orb--1 {
-      width: 400px;
-      height: 400px;
-      top: 10%;
-      left: -5%;
-      background: radial-gradient(circle at 40% 40%,
-        rgba(200, 90, 43, 0.25) 0%,
-        rgba(200, 90, 43, 0.08) 50%,
-        transparent 70%
-      );
-      animation: float-1 15s ease-in-out infinite;
-    }
-
-    .orb--2 {
-      width: 500px;
-      height: 500px;
-      top: 50%;
-      right: -10%;
-      background: radial-gradient(circle at 60% 50%,
-        rgba(30, 42, 74, 0.3) 0%,
-        rgba(42, 58, 98, 0.1) 50%,
-        transparent 70%
-      );
-      animation: float-2 20s ease-in-out infinite;
-      animation-delay: -5s;
-    }
-
-    .orb--3 {
-      width: 350px;
-      height: 350px;
-      bottom: 5%;
-      left: 25%;
-      background: radial-gradient(circle at 50% 60%,
-        rgba(232, 128, 74, 0.2) 0%,
-        rgba(200, 90, 43, 0.06) 50%,
-        transparent 70%
-      );
-      animation: float-3 25s ease-in-out infinite;
-      animation-delay: -10s;
-    }
-
-    .orb--4 {
-      width: 300px;
-      height: 300px;
-      top: 30%;
-      right: 20%;
-      background: radial-gradient(circle at 50% 40%,
-        rgba(42, 58, 98, 0.2) 0%,
-        rgba(30, 42, 74, 0.06) 50%,
-        transparent 70%
-      );
-      animation: float-1 18s ease-in-out infinite reverse;
-      animation-delay: -7s;
-    }
-
-    @keyframes float-1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(30px, -20px) scale(1.05); }
-      66% { transform: translate(-20px, 15px) scale(0.95); }
-    }
-
-    @keyframes float-2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(-25px, 20px) scale(1.03); }
-      66% { transform: translate(15px, -25px) scale(0.97); }
-    }
-
-    @keyframes float-3 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(20px, 25px) scale(0.95); }
-      66% { transform: translate(-30px, -10px) scale(1.05); }
-    }
-
-    /* ============================================
-       Sections (placeholder structure)
+       Waitlist Section
        ============================================ */
     #waitlist {
       position: relative;
       z-index: 2;
-      margin-top: -120px;
-      padding: 0 var(--space-8) var(--space-16);
+      margin-top: -48px;
+      padding: 0 var(--space-6) var(--space-16);
       display: flex;
       justify-content: center;
     }
 
-    #teaser {
-      position: relative;
-      z-index: 2;
+    .waitlist-card {
+      width: 100%;
+      max-width: 440px;
+      padding: var(--space-8);
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-100);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .waitlist-card__heading {
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--color-dark);
+      margin-bottom: var(--space-1);
+    }
+
+    .waitlist-card__subtext {
+      font-weight: 400;
+      font-size: 0.875rem;
+      color: var(--color-gray-500);
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+    }
+
+    /* Waitlist Form */
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .waitlist-form__input {
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-3) var(--space-4);
       background: var(--color-surface);
-      padding: var(--space-24) var(--space-8);
+      color: var(--color-dark);
+      border: 1.5px solid var(--color-gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .waitlist-form__input::placeholder {
+      color: var(--color-gray-400);
+    }
+
+    .waitlist-form__input:focus-visible {
+      border-color: var(--color-dark);
+      box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+      outline: none;
+    }
+
+    .waitlist-form__input.has-error {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.08);
+    }
+
+    .waitlist-form__btn {
+      position: relative;
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-3) var(--space-6);
+      background: var(--color-black);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background var(--transition-base), opacity var(--transition-base);
+    }
+
+    .waitlist-form__btn:hover {
+      background: var(--color-gray-700);
+    }
+
+    .waitlist-form__btn:active {
+      background: var(--color-black);
+    }
+
+    .waitlist-form__btn:focus-visible {
+      outline: 2px solid var(--color-black);
+      outline-offset: 2px;
+    }
+
+    .waitlist-form__btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Loading spinner */
+    .waitlist-form__btn.loading .btn-text {
+      visibility: hidden;
+    }
+
+    .waitlist-form__btn.loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      margin: -9px 0 0 -9px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: var(--color-white);
+      border-radius: 50%;
+      animation: spinner 0.6s linear infinite;
+    }
+
+    @keyframes spinner {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Error message */
+    .waitlist-form__error {
+      font-size: 0.875rem;
+      color: var(--color-error);
+      text-align: left;
+      margin: 0;
+    }
+
+    /* Success message */
+    .waitlist-success {
+      padding: var(--space-4) 0 0;
+    }
+
+    .waitlist-success__text {
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--color-gray-500);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       Teaser Section
+       ============================================ */
+    #teaser {
+      padding: var(--space-20) var(--space-8);
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: var(--space-6);
     }
 
     .teaser-line {
-      font-family: var(--font-heading);
       font-weight: 300;
-      font-style: italic;
-      font-size: 1.375rem;
-      color: var(--color-text-dark);
+      font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+      color: var(--color-gray-700);
       text-align: center;
-      max-width: 700px;
-      line-height: 1.6;
+      max-width: 600px;
+      line-height: 1.5;
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                  transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .teaser-line:nth-child(2) {
-      transition-delay: 0.15s;
-    }
-
-    .teaser-line:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-
-    .teaser-line + .teaser-line {
-      margin-top: var(--space-8);
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .teaser-line.visible {
@@ -378,12 +392,24 @@
       transform: translateY(0);
     }
 
+    .teaser-line:nth-child(2) { transition-delay: 0.12s; }
+    .teaser-line:nth-child(3) { transition-delay: 0.24s; }
+
+    /* ============================================
+       Divider
+       ============================================ */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--color-gray-200);
+      margin: 0 auto;
+    }
+
     /* ============================================
        Footer
        ============================================ */
     .site-footer {
-      background: var(--color-surface-alt);
-      padding: var(--space-8) var(--space-8);
+      padding: var(--space-12) var(--space-8) var(--space-8);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -402,275 +428,78 @@
       justify-content: center;
       min-width: 44px;
       min-height: 44px;
-      color: var(--color-text-muted);
+      color: var(--color-gray-400);
       transition: color var(--transition-base);
     }
 
     .footer-socials a:hover {
-      color: var(--color-primary);
+      color: var(--color-dark);
     }
 
     .footer-socials a:focus-visible {
-      outline: 2px solid var(--color-primary);
+      outline: 2px solid var(--color-black);
       outline-offset: 4px;
       border-radius: 2px;
     }
 
     .footer-socials svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       display: block;
     }
 
     .footer-copy {
-      font-family: var(--font-body);
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
-    }
-
-    /* ============================================
-       Glassmorphism Waitlist Card
-       ============================================ */
-    .glass-card {
-      width: 100%;
-      max-width: 480px;
-      padding: var(--space-12) var(--space-8);
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      -webkit-backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      box-shadow:
-        0 8px 32px rgba(30, 42, 74, 0.12),
-        0 2px 8px rgba(30, 42, 74, 0.06),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-      text-align: center;
-    }
-
-    @supports not (backdrop-filter: blur(1px)) {
-      .glass-card {
-        background: rgba(253, 246, 240, 0.92);
-      }
-    }
-
-    .glass-card__heading {
-      font-family: var(--font-heading);
-      font-weight: 400;
-      font-size: 1.75rem;
-      color: var(--color-text-dark);
-      margin-bottom: var(--space-2);
-    }
-
-    .glass-card__subtext {
-      font-family: var(--font-body);
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
-      line-height: 1.6;
-      margin-bottom: var(--space-8);
-    }
-
-    /* Waitlist Form */
-    .waitlist-form {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .waitlist-form__input {
-      width: 100%;
-      min-height: 44px;
-      padding: var(--space-3) var(--space-4);
-      background: var(--color-surface);
-      color: var(--color-text-dark);
-      border: 2px solid transparent;
-      border-radius: var(--radius-sm);
-      font-size: 1rem;
-      transition: border-color var(--transition-base), box-shadow var(--transition-base);
-    }
-
-    .waitlist-form__input::placeholder {
-      color: var(--color-text-muted);
-    }
-
-    .waitlist-form__input:focus-visible {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(200, 90, 43, 0.15);
-      outline: none;
-    }
-
-    .waitlist-form__input.has-error {
-      border-color: var(--color-error);
-      box-shadow: 0 0 0 3px rgba(200, 67, 43, 0.15);
-    }
-
-    .waitlist-form__btn {
-      position: relative;
-      width: 100%;
-      min-height: 44px;
-      padding: var(--space-3) var(--space-6);
-      background: var(--color-primary);
-      color: var(--color-surface);
-      border: none;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 1rem;
+      font-size: 0.8125rem;
+      color: var(--color-gray-400);
       letter-spacing: 0.02em;
-      cursor: pointer;
-      transition: background var(--transition-base), opacity var(--transition-base), box-shadow var(--transition-base);
-    }
-
-    .waitlist-form__btn:hover {
-      background: var(--color-primary-light);
-    }
-
-    .waitlist-form__btn:active {
-      background: var(--color-primary-dark);
-    }
-
-    .waitlist-form__btn:focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-      box-shadow: 0 0 0 3px rgba(200, 90, 43, 0.35);
-    }
-
-    .waitlist-form__btn:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    /* Loading spinner */
-    .waitlist-form__btn.loading .btn-text {
-      visibility: hidden;
-    }
-
-    .waitlist-form__btn.loading::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 20px;
-      height: 20px;
-      margin: -10px 0 0 -10px;
-      border: 2.5px solid rgba(253, 246, 240, 0.35);
-      border-top-color: var(--color-surface);
-      border-radius: 50%;
-      animation: spinner 0.6s linear infinite;
-    }
-
-    @keyframes spinner {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Error message */
-    .waitlist-form__error {
-      font-family: var(--font-body);
-      font-size: 0.875rem;
-      color: var(--color-error);
-      text-align: left;
-      margin: 0;
-    }
-
-    /* Success message */
-    .waitlist-success {
-      padding: var(--space-6) 0 0;
-    }
-
-    .waitlist-success__text {
-      font-family: var(--font-heading);
-      font-weight: 400;
-      font-style: italic;
-      font-size: 1.25rem;
-      color: var(--color-text-dark);
-      line-height: 1.5;
     }
 
     /* ============================================
        Responsive — Tablet (768px)
        ============================================ */
     @media (max-width: 768px) {
-      .hero-tagline {
-        font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+      .hero {
+        padding: var(--space-16) var(--space-6) var(--space-16);
       }
 
       .hero-logo {
         max-width: 200px;
-        margin-bottom: var(--space-12);
-      }
-
-      #waitlist {
-        margin-top: -100px;
-      }
-
-      .glass-card {
-        padding: var(--space-8) var(--space-6);
-      }
-
-      .orb--1 { width: 300px; height: 300px; }
-      .orb--2 { width: 380px; height: 380px; }
-      .orb--3 { width: 260px; height: 260px; }
-      .orb--4 { width: 220px; height: 220px; }
-
-      .teaser-line {
-        font-size: 1.25rem;
       }
     }
 
     /* ============================================
-       Responsive — Small Mobile (480px)
+       Responsive — Mobile (480px)
        ============================================ */
     @media (max-width: 480px) {
       .hero {
-        padding: var(--space-6);
+        padding: var(--space-12) var(--space-4) var(--space-12);
+      }
+
+      .hero-logo {
+        max-width: 170px;
+        margin-bottom: var(--space-8);
       }
 
       .hero-tagline {
         font-size: 1.5rem;
       }
 
-      .hero-teaser {
-        font-size: 0.875rem;
-      }
-
-      .hero-logo {
-        max-width: 180px;
-        margin-bottom: var(--space-8);
-      }
-
       #waitlist {
-        margin-top: -80px;
         padding-left: var(--space-4);
         padding-right: var(--space-4);
+        margin-top: -40px;
       }
 
-      .glass-card {
-        padding: var(--space-6) var(--space-4);
+      .waitlist-card {
+        padding: var(--space-6);
       }
-
-      .glass-card__heading {
-        font-size: 1.25rem;
-      }
-
-      .glass-card__subtext {
-        font-size: 0.875rem;
-      }
-
-      .orb--1 { width: 250px; height: 250px; }
-      .orb--2 { width: 300px; height: 300px; }
-      .orb--3 { width: 200px; height: 200px; }
-      .orb--4 { width: 180px; height: 180px; }
 
       #teaser {
         padding: var(--space-16) var(--space-4);
       }
 
-      .teaser-line {
-        font-size: 1rem;
-      }
-
       .site-footer {
-        padding: var(--space-6) var(--space-4);
+        padding: var(--space-8) var(--space-4) var(--space-6);
       }
     }
 
@@ -693,18 +522,9 @@
         opacity: 1;
       }
 
-      .orb {
-        animation: none !important;
-        will-change: auto;
-      }
-
       .teaser-line {
         opacity: 1;
         transform: none;
-        transition: none;
-      }
-
-      .skip-link {
         transition: none;
       }
     }
@@ -714,28 +534,15 @@
 
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- ==========================================
-       Main Content
-       ========================================== -->
   <main id="main">
 
     <!-- Hero Section -->
     <section id="hero" class="hero" aria-label="Welcome to Umpra">
-
-      <!-- Floating Orbs -->
-      <div class="orbs-container" aria-hidden="true">
-        <div class="orb orb--1"></div>
-        <div class="orb orb--2"></div>
-        <div class="orb orb--3"></div>
-        <div class="orb orb--4"></div>
-      </div>
-
-      <!-- Hero Content -->
       <div class="hero-content">
 
         <!-- Inline Logo SVG -->
         <div class="hero-logo" role="img" aria-label="Umpra logo">
-          <svg id="umpra-logo" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 767.75 183.32">
+          <svg id="umpra-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 767.75 183.32">
             <defs>
               <style>.umpra-logo-fill { fill: #fff; }</style>
             </defs>
@@ -760,11 +567,11 @@
       </div>
     </section>
 
-    <!-- Waitlist Section (Task 4) -->
+    <!-- Waitlist Section -->
     <section id="waitlist" aria-label="Join the waitlist">
-      <div class="glass-card">
-        <h2 class="glass-card__heading">Be the first to know</h2>
-        <p class="glass-card__subtext">Join the waitlist and we'll let you know when Umpra is ready.</p>
+      <div class="waitlist-card">
+        <h2 class="waitlist-card__heading">Be the first to know</h2>
+        <p class="waitlist-card__subtext">Join the waitlist and we'll let you know when Umpra is ready.</p>
 
         <form id="waitlist-form" class="waitlist-form" novalidate>
           <input
@@ -788,13 +595,14 @@
         </div>
 
         <noscript>
-          <p class="glass-card__subtext" style="margin-top: var(--space-4); margin-bottom: 0;">Please enable JavaScript to join the waitlist.</p>
+          <p class="waitlist-card__subtext" style="margin-top: var(--space-4); margin-bottom: 0;">Please enable JavaScript to join the waitlist.</p>
         </noscript>
       </div>
     </section>
 
     <!-- Teaser Section -->
     <section id="teaser" aria-label="Brand message">
+      <div class="divider"></div>
       <p class="teaser-line">The small rituals of your day, designed with intention.</p>
       <p class="teaser-line">Independence isn't a feature. It's the whole point.</p>
       <p class="teaser-line">Crafted for the moments that are quietly yours.</p>
@@ -802,9 +610,7 @@
 
   </main>
 
-  <!-- ==========================================
-       Footer
-       ========================================== -->
+  <!-- Footer -->
   <footer class="site-footer">
     <nav class="footer-socials" aria-label="Social links">
       <a href="#" aria-label="Instagram">
@@ -820,22 +626,19 @@
     <p class="footer-copy">&copy; 2026 Umpra</p>
   </footer>
 
-  <!-- ==========================================
-       Scripts
-       ========================================== -->
   <script>
     (function () {
       var WAITLIST_ENDPOINT = "YOUR_GOOGLE_SCRIPT_URL";
       // ^^^ Replace with your Google Apps Script web app URL
       // See README.md for setup instructions
 
-      const form = document.getElementById('waitlist-form');
-      const emailInput = document.getElementById('email-input');
-      const submitBtn = document.getElementById('submit-btn');
-      const errorMsg = document.getElementById('error-msg');
-      const successMsg = document.getElementById('success-msg');
+      var form = document.getElementById('waitlist-form');
+      var emailInput = document.getElementById('email-input');
+      var submitBtn = document.getElementById('submit-btn');
+      var errorMsg = document.getElementById('error-msg');
+      var successMsg = document.getElementById('success-msg');
 
-      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       function showError(msg) {
         errorMsg.textContent = msg;
@@ -850,13 +653,8 @@
       }
 
       function setLoading(loading) {
-        if (loading) {
-          submitBtn.disabled = true;
-          submitBtn.classList.add('loading');
-        } else {
-          submitBtn.disabled = false;
-          submitBtn.classList.remove('loading');
-        }
+        submitBtn.disabled = loading;
+        submitBtn.classList.toggle('loading', loading);
       }
 
       form.addEventListener('submit', async function (e) {
@@ -886,7 +684,6 @@
             body: JSON.stringify({ email: email })
           });
 
-          // no-cors returns opaque response — treat as success
           form.hidden = true;
           successMsg.hidden = false;
         } catch (err) {
@@ -895,22 +692,17 @@
         }
       });
 
-      // Clear error state when user starts typing
       emailInput.addEventListener('input', function () {
-        if (!errorMsg.hidden) {
-          clearError();
-        }
+        if (!errorMsg.hidden) clearError();
       });
     })();
 
-    // Teaser section scroll-triggered entrance
+    // Teaser entrance animations
     (function () {
       var lines = document.querySelectorAll('.teaser-line');
       if (!lines.length) return;
 
-      // Skip animation for reduced-motion preference
-      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         lines.forEach(function (el) { el.classList.add('visible'); });
         return;
       }
@@ -922,7 +714,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15 });
+      }, { threshold: 0.2 });
 
       lines.forEach(function (el) { observer.observe(el); });
     })();

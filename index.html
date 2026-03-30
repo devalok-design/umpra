@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umpra — Something Beautiful is Coming</title>
+  <meta name="description" content="Umpra — your everyday, on your terms. A thoughtful approach to daily wellness is taking shape. Stay close.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Umpra — Something Beautiful is Coming">
+  <meta property="og:description" content="Your everyday, on your terms. A thoughtful approach to daily wellness is taking shape.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umpra.com">
+
+  <!-- Google Fonts: DM Sans + Anonymous Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=DM+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       CSS Reset
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font: inherit;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* ============================================
+       Custom Properties
+       ============================================ */
+    :root {
+      --color-primary: #C85A2B;
+      --color-primary-light: #E8804A;
+      --color-primary-dark: #A04520;
+      --color-secondary: #1E2A4A;
+      --color-secondary-light: #2A3A62;
+      --color-surface: #FDF6F0;
+      --color-surface-alt: #F5EDE4;
+      --color-text-light: #FDF6F0;
+      --color-text-dark: #1E2A4A;
+      --color-text-muted: #6B7A94;
+
+      --glass-bg: rgba(253, 246, 240, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-shadow: rgba(30, 42, 74, 0.12);
+      --glass-blur: 20px;
+
+      --font-heading: 'DM Sans', sans-serif;
+      --font-mono: 'Anonymous Pro', monospace;
+
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-12: 48px;
+      --space-16: 64px;
+      --space-24: 96px;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================
+       Base Typography
+       ============================================ */
+    body {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      color: var(--color-text-dark);
+      background-color: var(--color-surface);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      line-height: 1.2;
+    }
+
+    code, pre, .mono {
+      font-family: var(--font-mono);
+    }
+
+    /* ============================================
+       Hero Section
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #1E2A4A 0%, #162038 50%, #1A2542 100%);
+      overflow: hidden;
+      padding: var(--space-8);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    /* Logo */
+    .hero-logo {
+      width: 100%;
+      max-width: 280px;
+      margin-bottom: var(--space-16);
+    }
+
+    .hero-logo svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Tagline */
+    .hero-tagline {
+      font-family: var(--font-heading);
+      font-weight: 300;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: var(--color-surface);
+      margin-bottom: var(--space-6);
+      line-height: 1.3;
+    }
+
+    /* Teaser */
+    .hero-teaser {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       Logo Star Animation
+       ============================================ */
+    .logo-star {
+      transform-origin: 729px 87px;
+      animation: star-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes star-pulse {
+      0%, 100% {
+        opacity: 0.85;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    /* ============================================
+       Floating Orbs
+       ============================================ */
+    .orbs-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      will-change: transform;
+    }
+
+    .orb--1 {
+      width: 400px;
+      height: 400px;
+      top: 10%;
+      left: -5%;
+      background: radial-gradient(circle at 40% 40%,
+        rgba(200, 90, 43, 0.25) 0%,
+        rgba(200, 90, 43, 0.08) 50%,
+        transparent 70%
+      );
+      animation: float-1 15s ease-in-out infinite;
+    }
+
+    .orb--2 {
+      width: 500px;
+      height: 500px;
+      top: 50%;
+      right: -10%;
+      background: radial-gradient(circle at 60% 50%,
+        rgba(30, 42, 74, 0.3) 0%,
+        rgba(42, 58, 98, 0.1) 50%,
+        transparent 70%
+      );
+      animation: float-2 20s ease-in-out infinite;
+      animation-delay: -5s;
+    }
+
+    .orb--3 {
+      width: 350px;
+      height: 350px;
+      bottom: 5%;
+      left: 25%;
+      background: radial-gradient(circle at 50% 60%,
+        rgba(232, 128, 74, 0.2) 0%,
+        rgba(200, 90, 43, 0.06) 50%,
+        transparent 70%
+      );
+      animation: float-3 25s ease-in-out infinite;
+      animation-delay: -10s;
+    }
+
+    .orb--4 {
+      width: 300px;
+      height: 300px;
+      top: 30%;
+      right: 20%;
+      background: radial-gradient(circle at 50% 40%,
+        rgba(42, 58, 98, 0.2) 0%,
+        rgba(30, 42, 74, 0.06) 50%,
+        transparent 70%
+      );
+      animation: float-1 18s ease-in-out infinite reverse;
+      animation-delay: -7s;
+    }
+
+    @keyframes float-1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.95); }
+    }
+
+    @keyframes float-2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-25px, 20px) scale(1.03); }
+      66% { transform: translate(15px, -25px) scale(0.97); }
+    }
+
+    @keyframes float-3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(20px, 25px) scale(0.95); }
+      66% { transform: translate(-30px, -10px) scale(1.05); }
+    }
+
+    /* ============================================
+       Sections (placeholder structure)
+       ============================================ */
+    #waitlist {
+      position: relative;
+      z-index: 2;
+    }
+
+    #teaser {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ============================================
+       Reduced Motion
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      .logo-star {
+        animation: none;
+        opacity: 1;
+      }
+
+      .orb {
+        animation: none !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ============================================
+       Responsive
+       ============================================ */
+    @media (max-width: 640px) {
+      .hero-logo {
+        max-width: 200px;
+        margin-bottom: var(--space-12);
+      }
+
+      .orb--1 { width: 250px; height: 250px; }
+      .orb--2 { width: 300px; height: 300px; }
+      .orb--3 { width: 200px; height: 200px; }
+      .orb--4 { width: 180px; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       Header
+       ========================================== -->
+  <header>
+    <!-- Reserved for nav if needed later -->
+  </header>
+
+  <!-- ==========================================
+       Main Content
+       ========================================== -->
+  <main>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero" aria-label="Welcome to Umpra">
+
+      <!-- Floating Orbs -->
+      <div class="orbs-container" aria-hidden="true">
+        <div class="orb orb--1"></div>
+        <div class="orb orb--2"></div>
+        <div class="orb orb--3"></div>
+        <div class="orb orb--4"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="hero-content">
+
+        <!-- Inline Logo SVG -->
+        <div class="hero-logo" role="img" aria-label="Umpra logo">
+          <svg id="umpra-logo" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 767.75 183.32">
+            <defs>
+              <style>.cls-1 { fill: #fff; }</style>
+            </defs>
+            <g>
+              <path class="cls-1" d="M264.02,36.58v55.45c0,6.02-1.15,10.4-3.42,13.15-2.28,2.75-5.34,4.12-9.24,4.12-8.3,0-12.45-5.36-12.45-16.06v-56.66h-34.76v63.88c0,12.45,3.16,22.01,9.44,28.63,6.3,6.62,14.8,9.95,25.53,9.95,5.34,0,10.14-1.19,14.35-3.52,4.23-2.35,7.81-5.66,10.76-9.95v11.46h33.95V36.58h-34.16Z"/>
+              <path class="cls-1" d="M453.47,44.62c-6.02-6.7-14.73-10.05-26.11-10.05-6.17,0-11.76,1.37-16.78,4.12-5.02,2.75-9.09,6.6-12.15,11.55-5.49-10.44-15.01-15.67-28.54-15.67-5.62,0-10.72,1.2-15.27,3.61-4.55,2.43-8.37,5.91-11.44,10.46v-12.06h-33.95v100.45h34.14v-55.25c0-6.02,1.19-10.48,3.52-13.36,2.35-2.88,5.46-4.33,9.35-4.33,4.29,0,7.39,1.41,9.35,4.21,1.94,2.82,2.9,6.83,2.9,12.06v56.66h34.56v-55.25c0-6.02,1.15-10.48,3.42-13.36,2.28-2.88,5.36-4.33,9.24-4.33,4.42,0,7.56,1.41,9.44,4.21,1.88,2.82,2.82,6.83,2.82,12.06v56.66h34.56v-64.09c0-12.19-3.03-21.63-9.05-28.33Z"/>
+              <path class="cls-1" d="M574.91,65.01c-2.48-6.49-5.83-11.98-10.04-16.48-4.21-4.48-9.07-7.92-14.56-10.35-5.49-2.41-11.19-3.61-17.08-3.61-6.43,0-11.85,1.28-16.27,3.82s-7.98,5.96-10.65,10.25v-12.06h-33.56v146.65h33.77v-56.64c5.76,8.3,14.86,12.45,27.31,12.45,5.76,0,11.32-1.19,16.67-3.52,5.36-2.35,10.12-5.76,14.28-10.25,4.14-4.48,7.49-9.97,10.04-16.48,2.54-6.49,3.82-13.83,3.82-21.99s-1.24-15.29-3.72-21.8ZM539.15,101.58c-3.82,3.95-8.62,5.93-14.37,5.93s-10.48-2.01-14.16-6.02c-3.67-4.03-5.51-8.97-5.51-14.88s1.84-10.84,5.51-14.86c3.69-4.03,8.41-6.02,14.16-6.02s10.55,1.98,14.37,5.93c3.82,3.95,5.72,8.94,5.72,14.95s-1.9,11.02-5.72,14.97Z"/>
+              <path class="cls-1" d="M646.73,36.58c-6.83,0-12.42,1.54-16.78,4.63-4.35,3.07-7.66,7.35-9.93,12.85v-17.48h-33.16v100.45h33.35v-46.61c0-3.87.28-7.13.81-9.74.53-2.61,1.47-4.68,2.82-6.23,1.34-1.54,3.1-2.61,5.32-3.22,2.2-.6,4.91-.9,8.13-.9h20.69v-33.75h-11.25Z"/>
+              <path class="cls-1 logo-star" d="M733.52,36.58v11.25c-2.82-4.16-6.4-7.39-10.76-9.74-4.35-2.33-9.67-3.52-15.97-3.52-5.89,0-11.59,1.2-17.06,3.61-5.51,2.43-10.36,5.87-14.58,10.35-4.21,4.5-7.6,9.99-10.14,16.48-2.54,6.51-3.82,13.77-3.82,21.8s1.28,15.5,3.82,21.99c2.54,6.51,5.93,12,10.14,16.48,4.21,4.5,9.01,7.9,14.37,10.25,5.34,2.33,10.91,3.52,16.67,3.52,6.17,0,11.53-1.2,16.08-3.63,4.55-2.41,8.3-5.81,11.25-10.23v11.85h34.14V36.58h-34.14ZM729.68,92.43l-2.73,1.07c-6.3,2.46-11.21,7.56-13.45,13.96l-.77,2.22c-1.88,5.4-9.52,5.4-11.4,0l-.77-2.22c-2.24-6.4-7.15-11.49-13.45-13.96l-2.73-1.07c-5.12-2.01-5.12-9.24,0-11.25l2.88-1.13c6.21-2.43,11.04-7.45,13.24-13.75l.83-2.37c1.88-5.4,9.52-5.4,11.4,0l.77,2.22c2.24,6.4,7.15,11.49,13.45,13.96l2.73,1.07c5.12,2.01,5.12,9.24,0,11.25Z"/>
+            </g>
+            <g>
+              <path class="cls-1" d="M86.24,7.54c-16.91,14.09,17.89,42.27,28.7,48.09,12.37,6.66,40.02,17.61,46.87-2.17,5.08-14.67-8.21-36.97-22.03-44.59-15.29-8.44-41.37-11.45-53.54-1.32Z"/>
+              <path class="cls-1" d="M7.73,74.74c13.21-7.29,29.43,17.55,34.36,32.72,8.56,26.36,4.52,42.9-6.93,43.49-11.46.59-25.34-11.57-31.67-30.12C-2.85,102.27-.03,79.01,7.73,74.74Z"/>
+              <path class="cls-1" d="M158.99,82.5c7.7,21.05-9.32,47.18-27.42,62.53-16.87,14.31-49.58,23.58-66.39,14.92-20.93-10.78,13.01-47.92,25.9-58.86,13.04-11.06,59.43-41.77,67.9-18.58Z"/>
+              <path class="cls-1" d="M63.72,2c10.77,1.24,12.67,10.09-3.33,28.75-11.88,13.86-33.2,32.63-46.75,28.08-6.84-2.3-4.46-23.38,8.83-37.89C35.76,6.45,52.96.76,63.72,2Z"/>
+            </g>
+          </svg>
+        </div>
+
+        <h1 class="hero-tagline">Your everyday, on your terms.</h1>
+        <p class="hero-teaser">Something thoughtful is taking shape. Stay close.</p>
+      </div>
+    </section>
+
+    <!-- Waitlist Section (Task 4) -->
+    <section id="waitlist">
+    </section>
+
+    <!-- Teaser Section (future) -->
+    <section id="teaser">
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       Footer
+       ========================================== -->
+  <footer>
+  </footer>
+
+  <!-- ==========================================
+       Scripts
+       ========================================== -->
+  <script>
+  </script>
+
+</body>
+</html>

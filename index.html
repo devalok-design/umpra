@@ -395,6 +395,26 @@
       to { stroke-dashoffset: 0; }
     }
 
+    /* Success fade away */
+    .waitlist-success.fade-away {
+      animation: fade-down 0.6s ease forwards;
+    }
+
+    @keyframes fade-down {
+      to { opacity: 0; transform: translateY(4px); }
+    }
+
+    /* Pink tint pulse on body */
+    @keyframes pink-tint {
+      0% { background-color: var(--zinc-50); }
+      15% { background-color: #fdf2f8; }
+      100% { background-color: var(--zinc-50); }
+    }
+
+    body.pink-pulse {
+      animation: pink-tint 3s ease forwards;
+    }
+
     /* Confetti canvas */
     #confetti-canvas {
       position: fixed;
@@ -616,10 +636,19 @@
 
           setLoading(false);
           form.classList.add('fade-out');
+          document.body.classList.add('pink-pulse');
           setTimeout(function () {
             form.hidden = true;
             successMsg.hidden = false;
             launchConfetti();
+
+            // Fade away success message after 12 seconds
+            setTimeout(function () {
+              successMsg.classList.add('fade-away');
+              setTimeout(function () {
+                successMsg.hidden = true;
+              }, 600);
+            }, 12000);
           }, 300);
         } catch (err) {
           showError('Something went wrong. Please try again.');

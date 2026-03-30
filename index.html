@@ -292,11 +292,183 @@
     #waitlist {
       position: relative;
       z-index: 2;
+      margin-top: -120px;
+      padding: 0 var(--space-8) var(--space-16);
+      display: flex;
+      justify-content: center;
     }
 
     #teaser {
       position: relative;
       z-index: 2;
+    }
+
+    /* ============================================
+       Glassmorphism Waitlist Card
+       ============================================ */
+    .glass-card {
+      width: 100%;
+      max-width: 480px;
+      padding: var(--space-12) var(--space-8);
+      background: rgba(253, 246, 240, 0.75);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: var(--radius-lg);
+      box-shadow:
+        0 8px 32px rgba(30, 42, 74, 0.12),
+        0 2px 8px rgba(30, 42, 74, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      text-align: center;
+    }
+
+    @supports not (backdrop-filter: blur(1px)) {
+      .glass-card {
+        background: rgba(253, 246, 240, 0.92);
+      }
+    }
+
+    .glass-card__heading {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--color-text-dark);
+      margin-bottom: var(--space-2);
+    }
+
+    .glass-card__subtext {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--space-8);
+    }
+
+    /* Waitlist Form */
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .waitlist-form__input {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface);
+      color: var(--color-text-dark);
+      border: 2px solid transparent;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .waitlist-form__input::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .waitlist-form__input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(200, 90, 43, 0.15);
+    }
+
+    .waitlist-form__input.has-error {
+      border-color: #C8432B;
+      box-shadow: 0 0 0 3px rgba(200, 67, 43, 0.15);
+    }
+
+    .waitlist-form__btn {
+      position: relative;
+      width: 100%;
+      padding: var(--space-3) var(--space-6);
+      background: var(--color-primary);
+      color: var(--color-surface);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      outline: none;
+      transition: background var(--transition-base), opacity var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .waitlist-form__btn:hover {
+      background: var(--color-primary-light);
+    }
+
+    .waitlist-form__btn:active {
+      background: var(--color-primary-dark);
+    }
+
+    .waitlist-form__btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(200, 90, 43, 0.35);
+    }
+
+    .waitlist-form__btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Loading spinner */
+    .waitlist-form__btn.loading .btn-text {
+      visibility: hidden;
+    }
+
+    .waitlist-form__btn.loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2.5px solid rgba(253, 246, 240, 0.35);
+      border-top-color: var(--color-surface);
+      border-radius: 50%;
+      animation: spinner 0.6s linear infinite;
+    }
+
+    @keyframes spinner {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Error message */
+    .waitlist-form__error {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: #C8432B;
+      text-align: left;
+      margin: 0;
+    }
+
+    /* Success message */
+    .waitlist-success {
+      padding: var(--space-6) 0 0;
+    }
+
+    .waitlist-success__text {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: var(--color-text-dark);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       Responsive — Waitlist
+       ============================================ */
+    @media (max-width: 640px) {
+      #waitlist {
+        margin-top: -80px;
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+      }
+
+      .glass-card {
+        padding: var(--space-8) var(--space-6);
+      }
     }
 
     /* ============================================
@@ -389,7 +561,31 @@
     </section>
 
     <!-- Waitlist Section (Task 4) -->
-    <section id="waitlist">
+    <section id="waitlist" aria-label="Join the waitlist">
+      <div class="glass-card">
+        <h2 class="glass-card__heading">Be the first to know</h2>
+        <p class="glass-card__subtext">Join the waitlist and we'll let you know when Umpra is ready.</p>
+
+        <form id="waitlist-form" class="waitlist-form" novalidate>
+          <input
+            type="email"
+            id="email-input"
+            class="waitlist-form__input"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+            aria-describedby="error-msg"
+          >
+          <p id="error-msg" class="waitlist-form__error" hidden aria-live="polite"></p>
+          <button type="submit" id="submit-btn" class="waitlist-form__btn">
+            <span class="btn-text">Join the Waitlist</span>
+          </button>
+        </form>
+
+        <div id="success-msg" class="waitlist-success" hidden>
+          <p class="waitlist-success__text">You're on the list. We'll be in touch soon.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Teaser Section (future) -->
@@ -408,6 +604,79 @@
        Scripts
        ========================================== -->
   <script>
+    const WAITLIST_ENDPOINT = "YOUR_GOOGLE_SCRIPT_URL";
+    // ^^^ Replace with your Google Apps Script web app URL
+    // See README.md for setup instructions
+
+    (function () {
+      const form = document.getElementById('waitlist-form');
+      const emailInput = document.getElementById('email-input');
+      const submitBtn = document.getElementById('submit-btn');
+      const errorMsg = document.getElementById('error-msg');
+      const successMsg = document.getElementById('success-msg');
+
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      function showError(msg) {
+        errorMsg.textContent = msg;
+        errorMsg.hidden = false;
+        emailInput.classList.add('has-error');
+      }
+
+      function clearError() {
+        errorMsg.textContent = '';
+        errorMsg.hidden = true;
+        emailInput.classList.remove('has-error');
+      }
+
+      function setLoading(loading) {
+        if (loading) {
+          submitBtn.disabled = true;
+          submitBtn.classList.add('loading');
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+        }
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        clearError();
+
+        var email = emailInput.value.trim();
+
+        if (!EMAIL_RE.test(email)) {
+          showError('Please enter a valid email address.');
+          emailInput.focus();
+          return;
+        }
+
+        setLoading(true);
+
+        try {
+          await fetch(WAITLIST_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify({ email: email })
+          });
+
+          // no-cors returns opaque response — treat as success
+          form.hidden = true;
+          successMsg.hidden = false;
+        } catch (err) {
+          showError('Something went wrong. Please try again.');
+          setLoading(false);
+        }
+      });
+
+      // Clear error state when user starts typing
+      emailInput.addEventListener('input', function () {
+        if (!errorMsg.hidden) {
+          clearError();
+        }
+      });
+    })();
   </script>
 
 </body>

@@ -166,7 +166,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: var(--space-20) var(--space-8) var(--space-24);
+      padding: var(--space-24) var(--space-8);
+      padding-bottom: 160px;
       background: linear-gradient(170deg, var(--color-black) 0%, var(--color-gray-900) 100%);
       overflow: hidden;
     }
@@ -433,43 +434,6 @@
     }
 
     /* ============================================
-       Teaser Section
-       ============================================ */
-    #teaser {
-      padding: var(--space-20) var(--space-8);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-6);
-    }
-
-    .divider {
-      width: 48px;
-      height: 1px;
-      background: var(--color-gray-200);
-    }
-
-    .teaser-line {
-      font-weight: 300;
-      font-size: clamp(var(--text-lg), 2.5vw, 1.375rem);
-      color: var(--color-gray-700);
-      text-align: center;
-      max-width: 560px;
-      line-height: 1.5;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .teaser-line.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .teaser-line:nth-child(3) { transition-delay: 0.12s; }
-    .teaser-line:nth-child(4) { transition-delay: 0.24s; }
-
-    /* ============================================
        Footer
        ============================================ */
     .site-footer {
@@ -523,7 +487,8 @@
        ============================================ */
     @media (max-width: 768px) {
       .hero {
-        padding: var(--space-16) var(--space-6) var(--space-20);
+        padding: var(--space-16) var(--space-6);
+        padding-bottom: 120px;
       }
 
       .hero-logo {
@@ -540,7 +505,8 @@
        ============================================ */
     @media (max-width: 480px) {
       .hero {
-        padding: var(--space-12) var(--space-4) var(--space-16);
+        padding: var(--space-12) var(--space-4);
+        padding-bottom: 100px;
       }
 
       .hero-tagline {
@@ -590,11 +556,6 @@
         opacity: 1;
       }
 
-      .teaser-line {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
     }
   </style>
 </head>
@@ -673,13 +634,6 @@
       </div>
     </section>
 
-    <!-- Teaser Section -->
-    <section id="teaser" aria-label="Brand message">
-      <div class="divider"></div>
-      <p class="teaser-line">The small rituals of your day, designed with intention.</p>
-      <p class="teaser-line">Independence isn't a feature. It's the whole point.</p>
-      <p class="teaser-line">Crafted for the moments that are quietly yours.</p>
-    </section>
 
   </main>
 
@@ -770,27 +724,6 @@
       });
     })();
 
-    // Teaser entrance animations
-    (function () {
-      var lines = document.querySelectorAll('.teaser-line');
-      if (!lines.length) return;
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        lines.forEach(function (el) { el.classList.add('visible'); });
-        return;
-      }
-
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-
-      lines.forEach(function (el) { observer.observe(el); });
-    })();
   </script>
 
 </body>

@@ -337,13 +337,73 @@
 
     /* Success */
     .waitlist-success {
-      padding: var(--space-2) 0;
+      padding: var(--space-4) 0;
+      animation: fade-up 0.5s ease forwards;
+    }
+
+    .waitlist-success__check {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto var(--space-3);
+      background: var(--zinc-900);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .waitlist-success__check svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--white);
+    }
+
+    .check-path {
+      stroke-dasharray: 24;
+      stroke-dashoffset: 24;
+      animation: draw-check 0.4s ease 0.3s forwards;
     }
 
     .waitlist-success__text {
       font-weight: 400;
       font-size: var(--text-base);
       color: var(--zinc-500);
+      animation: fade-up 0.4s ease 0.2s both;
+    }
+
+    /* Form fade out */
+    .waitlist-form.fade-out {
+      animation: fade-out 0.3s ease forwards;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fade-out {
+      to { opacity: 0; transform: translateY(-4px); }
+    }
+
+    @keyframes scale-in {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    @keyframes draw-check {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Confetti canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
     }
 
     /* ============================================
@@ -473,7 +533,10 @@
         <p id="error-msg" class="waitlist-form__error" hidden aria-live="polite"></p>
 
         <div id="success-msg" class="waitlist-success" hidden>
-          <p class="waitlist-success__text">You're on the list. We'll be in touch soon.</p>
+          <div class="waitlist-success__check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="check-path" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <p class="waitlist-success__text">You're on the waitlist, we'll keep you posted with new updates on Umpra!</p>
         </div>
 
         <noscript>
@@ -550,8 +613,14 @@
             headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify({ email: email })
           });
-          form.hidden = true;
-          successMsg.hidden = false;
+
+          setLoading(false);
+          form.classList.add('fade-out');
+          setTimeout(function () {
+            form.hidden = true;
+            successMsg.hidden = false;
+            launchConfetti();
+          }, 300);
         } catch (err) {
           showError('Something went wrong. Please try again.');
           setLoading(false);
@@ -561,6 +630,67 @@
       emailInput.addEventListener('input', function () {
         if (!errorMsg.hidden) clearError();
       });
+
+      // Confetti
+      function launchConfetti() {
+        var canvas = document.createElement('canvas');
+        canvas.id = 'confetti-canvas';
+        document.body.appendChild(canvas);
+        var ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        var pieces = [];
+        var colors = ['#18181b', '#71717a', '#a1a1aa', '#d4d4d8', '#e4e4e7'];
+        var total = 80;
+
+        for (var i = 0; i < total; i++) {
+          pieces.push({
+            x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+            y: canvas.height / 2,
+            vx: (Math.random() - 0.5) * 12,
+            vy: -Math.random() * 14 - 4,
+            w: Math.random() * 8 + 4,
+            h: Math.random() * 4 + 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 12,
+            opacity: 1
+          });
+        }
+
+        var frame = 0;
+        var maxFrames = 120;
+
+        function animate() {
+          if (frame > maxFrames) {
+            canvas.remove();
+            return;
+          }
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          pieces.forEach(function (p) {
+            p.x += p.vx;
+            p.vy += 0.25;
+            p.y += p.vy;
+            p.rotation += p.rotSpeed;
+            p.opacity = Math.max(0, 1 - frame / maxFrames);
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rotation * Math.PI / 180);
+            ctx.globalAlpha = p.opacity;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          });
+
+          frame++;
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
     })();
   </script>
 

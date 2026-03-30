@@ -180,8 +180,15 @@
     /* ============================================
        Logo Star Animation
        ============================================ */
-    /* Star animation removed — the star and 'a' letter share
-       a single SVG path, so animating it changes the 'a' color */
+    .logo-star {
+      transform-origin: 729px 87px;
+      animation: star-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes star-pulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
 
     /* ============================================
        Hero Card (glassmorphism)

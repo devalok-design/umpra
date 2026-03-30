@@ -99,6 +99,46 @@
     }
 
     /* ============================================
+       Selection Color
+       ============================================ */
+    ::selection {
+      background: rgba(200, 90, 43, 0.2);
+      color: var(--color-text-dark);
+    }
+
+    /* ============================================
+       Skip Link
+       ============================================ */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: var(--space-4);
+      z-index: 9999;
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-primary);
+      color: var(--color-surface);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.875rem;
+      border-radius: var(--radius-sm);
+      transition: top var(--transition-base);
+    }
+
+    .skip-link:focus {
+      top: var(--space-4);
+    }
+
+    /* ============================================
+       Focus-Visible Global
+       ============================================ */
+    a:focus-visible,
+    input:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    /* ============================================
        Base Typography
        ============================================ */
     body {
@@ -359,6 +399,10 @@
 
     .footer-socials a {
       display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
       color: var(--color-text-muted);
       transition: color var(--transition-base);
     }
@@ -435,13 +479,13 @@
 
     .waitlist-form__input {
       width: 100%;
+      min-height: 44px;
       padding: var(--space-3) var(--space-4);
       background: var(--color-surface);
       color: var(--color-text-dark);
       border: 2px solid transparent;
       border-radius: var(--radius-sm);
       font-size: 1rem;
-      outline: none;
       transition: border-color var(--transition-base), box-shadow var(--transition-base);
     }
 
@@ -449,9 +493,10 @@
       color: var(--color-text-muted);
     }
 
-    .waitlist-form__input:focus {
+    .waitlist-form__input:focus-visible {
       border-color: var(--color-primary);
       box-shadow: 0 0 0 3px rgba(200, 90, 43, 0.15);
+      outline: none;
     }
 
     .waitlist-form__input.has-error {
@@ -462,6 +507,7 @@
     .waitlist-form__btn {
       position: relative;
       width: 100%;
+      min-height: 44px;
       padding: var(--space-3) var(--space-6);
       background: var(--color-primary);
       color: var(--color-surface);
@@ -471,7 +517,6 @@
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
-      outline: none;
       transition: background var(--transition-base), opacity var(--transition-base), box-shadow var(--transition-base);
     }
 
@@ -484,6 +529,8 @@
     }
 
     .waitlist-form__btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
       box-shadow: 0 0 0 3px rgba(200, 90, 43, 0.35);
     }
 
@@ -539,9 +586,57 @@
     }
 
     /* ============================================
-       Responsive — Waitlist
+       Responsive — Tablet (768px)
        ============================================ */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .hero-tagline {
+        font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+      }
+
+      .hero-logo {
+        max-width: 200px;
+        margin-bottom: var(--space-12);
+      }
+
+      #waitlist {
+        margin-top: -100px;
+      }
+
+      .glass-card {
+        padding: var(--space-8) var(--space-6);
+      }
+
+      .orb--1 { width: 300px; height: 300px; }
+      .orb--2 { width: 380px; height: 380px; }
+      .orb--3 { width: 260px; height: 260px; }
+      .orb--4 { width: 220px; height: 220px; }
+
+      .teaser-line {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* ============================================
+       Responsive — Small Mobile (480px)
+       ============================================ */
+    @media (max-width: 480px) {
+      .hero {
+        padding: var(--space-6);
+      }
+
+      .hero-tagline {
+        font-size: 1.25rem;
+      }
+
+      .hero-teaser {
+        font-size: 0.875rem;
+      }
+
+      .hero-logo {
+        max-width: 180px;
+        margin-bottom: var(--space-8);
+      }
+
       #waitlist {
         margin-top: -80px;
         padding-left: var(--space-4);
@@ -549,14 +644,56 @@
       }
 
       .glass-card {
-        padding: var(--space-8) var(--space-6);
+        padding: var(--space-6) var(--space-4);
       }
+
+      .glass-card__heading {
+        font-size: 1.25rem;
+      }
+
+      .glass-card__subtext {
+        font-size: 0.8125rem;
+      }
+
+      .orb--1 { width: 250px; height: 250px; }
+      .orb--2 { width: 300px; height: 300px; }
+      .orb--3 { width: 200px; height: 200px; }
+      .orb--4 { width: 180px; height: 180px; }
+
+      #teaser {
+        padding: var(--space-16) var(--space-4);
+      }
+
+      .teaser-line {
+        font-size: 1rem;
+      }
+
+      .site-footer {
+        padding: var(--space-6) var(--space-4);
+      }
+    }
+
+    /* ============================================
+       Prevent Horizontal Overflow
+       ============================================ */
+    html, body {
+      overflow-x: hidden;
     }
 
     /* ============================================
        Reduced Motion
        ============================================ */
     @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
       .logo-star {
         animation: none;
         opacity: 1;
@@ -566,34 +703,21 @@
         animation: none !important;
       }
 
-      html {
-        scroll-behavior: auto;
-      }
-
       .teaser-line {
         opacity: 1;
         transform: none;
         transition: none;
       }
-    }
 
-    /* ============================================
-       Responsive
-       ============================================ */
-    @media (max-width: 640px) {
-      .hero-logo {
-        max-width: 200px;
-        margin-bottom: var(--space-12);
+      .skip-link {
+        transition: none;
       }
-
-      .orb--1 { width: 250px; height: 250px; }
-      .orb--2 { width: 300px; height: 300px; }
-      .orb--3 { width: 200px; height: 200px; }
-      .orb--4 { width: 180px; height: 180px; }
     }
   </style>
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- ==========================================
        Header
@@ -605,7 +729,7 @@
   <!-- ==========================================
        Main Content
        ========================================== -->
-  <main>
+  <main id="main">
 
     <!-- Hero Section -->
     <section id="hero" class="hero" aria-label="Welcome to Umpra">
@@ -673,6 +797,10 @@
         <div id="success-msg" class="waitlist-success" hidden>
           <p class="waitlist-success__text">You're on the list. We'll be in touch soon.</p>
         </div>
+
+        <noscript>
+          <p class="glass-card__subtext" style="margin-top: var(--space-4); margin-bottom: 0;">Please enable JavaScript to join the waitlist.</p>
+        </noscript>
       </div>
     </section>
 

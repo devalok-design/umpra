@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Umpra — Something Beautiful is Coming</title>
-  <meta name="description" content="Umpra — your everyday, on your terms. A thoughtful approach to daily wellness is taking shape. Stay close.">
+  <title>Umpra — Wellness, Within Reach</title>
+  <meta name="description" content="Umpra — a wellness product designed to give people with limited grip strength the ability to take care of themselves, independently and with dignity.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Umpra — Something Beautiful is Coming">
-  <meta property="og:description" content="Your everyday, on your terms. A thoughtful approach to daily wellness is taking shape.">
+  <meta property="og:title" content="Umpra — Wellness, Within Reach">
+  <meta property="og:description" content="Your everyday, on your terms. A wellness product designed for people with limited grip strength — independently, comfortably, and with dignity.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://umpra.com">
 
@@ -46,37 +46,36 @@
     ul, ol { list-style: none; }
 
     /* ============================================
-       Tokens (Elegant + zinc monochrome)
+       Tokens — warm wellness palette
        ============================================ */
     :root {
-      --zinc-950: #09090b;
-      --zinc-900: #18181b;
-      --zinc-800: #27272a;
-      --zinc-700: #3f3f46;
-      --zinc-600: #52525b;
-      --zinc-500: #71717a;
-      --zinc-400: #a1a1aa;
-      --zinc-300: #d4d4d8;
-      --zinc-200: #e4e4e7;
-      --zinc-100: #f4f4f5;
-      --zinc-50: #fafafa;
+      --warm-950: #1f1b18;
+      --warm-900: #2c2825;
+      --warm-800: #3d3732;
+      --warm-700: #544d46;
+      --warm-600: #6b6058;
+      --warm-500: #8a7e76;
+      --warm-400: #9c9189;
+      --warm-300: #b5aca4;
+      --warm-200: #d4cec8;
+      --warm-100: #e8e2dc;
+      --warm-50: #faf8f4;
       --white: #ffffff;
-      --color-error: #dc2626;
+      --color-error: #c44033;
+      --accent: #8b6d54;
+      --accent-light: #f3ede6;
 
       --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
-      /* Elegant type scale: 14/16/18/24/32/40 */
-      --text-xs: 0.8125rem;   /* 13px */
-      --text-sm: 0.875rem;    /* 14px */
-      --text-base: 1rem;      /* 16px */
-      --text-lg: 1.125rem;    /* 18px */
-      --text-xl: 1.5rem;      /* 24px */
-      --text-2xl: 2rem;       /* 32px */
-      --text-3xl: 2.5rem;     /* 40px */
-      --text-4xl: 3rem;       /* 48px */
-      --text-5xl: 3.75rem;    /* 60px */
+      --text-xs: 0.8125rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.0625rem;
+      --text-xl: 1.5rem;
+      --text-2xl: 2rem;
+      --text-3xl: 2.5rem;
+      --text-4xl: 3rem;
 
-      /* Elegant spacing: 4/8/12/16/24/32 */
       --space-1: 4px;
       --space-2: 8px;
       --space-3: 12px;
@@ -89,14 +88,13 @@
       --space-16: 64px;
       --space-20: 80px;
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
       --transition: 0.2s ease;
     }
 
     ::selection {
-      background: rgba(9, 9, 11, 0.08);
+      background: rgba(139, 109, 84, 0.15);
     }
 
     /* ============================================
@@ -108,7 +106,7 @@
       left: var(--space-4);
       z-index: 9999;
       padding: var(--space-2) var(--space-4);
-      background: var(--zinc-900);
+      background: var(--warm-900);
       color: var(--white);
       font-family: var(--font);
       font-weight: 500;
@@ -124,55 +122,45 @@
     a:focus-visible,
     input:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--zinc-900);
+      outline: 2px solid var(--warm-900);
       outline-offset: 2px;
     }
 
     /* ============================================
-       Page Background + Grid Pattern
+       Page
        ============================================ */
     body {
       font-family: var(--font);
       font-weight: 400;
-      color: var(--zinc-900);
-      background-color: var(--zinc-50);
-      background-image:
-        linear-gradient(rgba(228, 228, 231, 0.4) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(228, 228, 231, 0.4) 1px, transparent 1px);
-      background-size: 64px 64px;
-      background-position: -1px -1px;
+      color: var(--warm-900);
+      background-color: var(--warm-50);
     }
 
-    /* ============================================
-       Page Layout
-       ============================================ */
     .page {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
-      padding: var(--space-8) 0;
+      padding: var(--space-16) var(--space-6) var(--space-10);
+    }
+
+    /* Content column — consistent reading width */
+    .content-col {
+      width: 100%;
+      max-width: 672px;
     }
 
     /* ============================================
        Logo
        ============================================ */
     .logo {
-      width: 160px;
-      margin-top: auto;
-      margin-bottom: var(--space-12);
+      width: 140px;
+      margin-bottom: var(--space-16);
     }
 
     .logo svg {
       width: 100%;
       height: auto;
-    }
-
-    /* ============================================
-       Logo Star Animation
-       ============================================ */
-    .logo svg {
       animation: logo-breathe 4s ease-in-out infinite;
     }
 
@@ -182,87 +170,97 @@
     }
 
     /* ============================================
-       Hero Card (glassmorphism)
+       Headline
        ============================================ */
-    .hero-card {
-      position: relative;
-      width: calc(100% - var(--space-6) * 2);
-      max-width: 680px;
-      margin: 0 auto;
-      padding: var(--space-12) var(--space-10);
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--zinc-200);
-      border-radius: var(--radius-lg);
-      text-align: center;
-      overflow: hidden;
-    }
-
-    @supports not (backdrop-filter: blur(1px)) {
-      .hero-card {
-        background: rgba(255, 255, 255, 0.92);
-      }
-    }
-
-    .hero-card__tagline {
+    .hero-headline {
       font-weight: 300;
       font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
-      line-height: 1.15;
-      letter-spacing: -0.025em;
-      color: var(--zinc-900);
-      margin-bottom: var(--space-4);
-    }
-
-    .hero-card__teaser {
-      font-weight: 400;
-      font-size: var(--text-base);
-      color: var(--zinc-500);
-      line-height: 1.6;
-      max-width: 420px;
-      margin: 0 auto var(--space-10);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--warm-900);
+      text-align: center;
+      margin-bottom: var(--space-12);
     }
 
     /* ============================================
-       Waitlist Form (inside hero card)
+       Story
        ============================================ */
+    .story {
+      margin-bottom: var(--space-16);
+    }
+
+    .story__paragraph {
+      font-weight: 400;
+      font-size: var(--text-lg);
+      color: var(--warm-600);
+      line-height: 1.75;
+    }
+
+    .story__paragraph + .story__paragraph {
+      margin-top: var(--space-6);
+    }
+
+    .story__paragraph--emphasis {
+      font-style: italic;
+      color: var(--warm-700);
+    }
+
+
+    /* ============================================
+       Waitlist Section
+       ============================================ */
+    .waitlist-section {
+      text-align: center;
+      margin-bottom: var(--space-16);
+      background: var(--white);
+      border: 1px solid var(--warm-100);
+      border-radius: var(--radius-md);
+      padding: var(--space-10) var(--space-8);
+    }
+
+    .waitlist-section__label {
+      font-weight: 500;
+      font-size: var(--text-base);
+      color: var(--warm-700);
+      margin-bottom: var(--space-6);
+    }
+
     .waitlist-form {
       display: flex;
-      gap: var(--space-2);
-      max-width: 400px;
+      gap: var(--space-3);
+      max-width: 480px;
       margin: 0 auto;
     }
 
-    /* Input — states: default, hover, focus-visible, error, disabled */
     .waitlist-form__input {
       flex: 1;
-      min-height: 44px;
+      min-height: 48px;
       padding: var(--space-3) var(--space-4);
-      background: var(--white);
-      color: var(--zinc-900);
-      border: 1px solid var(--zinc-200);
+      background: var(--warm-50);
+      color: var(--warm-900);
+      border: 1px solid var(--warm-200);
       border-radius: var(--radius-sm);
       font-size: var(--text-sm);
       transition: border-color var(--transition), box-shadow var(--transition);
     }
 
     .waitlist-form__input::placeholder {
-      color: var(--zinc-400);
+      color: var(--warm-400);
     }
 
     .waitlist-form__input:hover {
-      border-color: var(--zinc-300);
+      border-color: var(--warm-300);
     }
 
     .waitlist-form__input:focus-visible {
-      border-color: var(--zinc-900);
-      box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.06);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(139, 109, 84, 0.1);
       outline: none;
     }
 
     .waitlist-form__input.has-error {
       border-color: var(--color-error);
-      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.06);
+      box-shadow: 0 0 0 3px rgba(196, 64, 51, 0.08);
     }
 
     .waitlist-form__input:disabled {
@@ -270,12 +268,11 @@
       cursor: not-allowed;
     }
 
-    /* Button — states: default, hover, active, focus-visible, disabled, loading */
     .waitlist-form__btn {
       position: relative;
-      min-height: 44px;
-      padding: var(--space-3) var(--space-5);
-      background: var(--zinc-900);
+      min-height: 48px;
+      padding: var(--space-3) var(--space-6);
+      background: var(--warm-900);
       color: var(--white);
       border: none;
       border-radius: var(--radius-sm);
@@ -287,15 +284,15 @@
     }
 
     .waitlist-form__btn:hover {
-      background: var(--zinc-800);
+      background: var(--warm-800);
     }
 
     .waitlist-form__btn:active {
-      background: var(--zinc-950);
+      background: var(--warm-950);
     }
 
     .waitlist-form__btn:focus-visible {
-      outline: 2px solid var(--zinc-900);
+      outline: 2px solid var(--warm-900);
       outline-offset: 2px;
     }
 
@@ -327,12 +324,24 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Error message */
     .waitlist-form__error {
       font-size: var(--text-sm);
       color: var(--color-error);
       text-align: left;
       margin-top: var(--space-2);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .waitlist-form__consent {
+      font-size: var(--text-xs);
+      color: var(--warm-400);
+      line-height: 1.5;
+      margin-top: var(--space-3);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Success */
@@ -345,7 +354,7 @@
       width: 40px;
       height: 40px;
       margin: 0 auto var(--space-3);
-      background: var(--zinc-900);
+      background: var(--accent);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -368,11 +377,10 @@
     .waitlist-success__text {
       font-weight: 400;
       font-size: var(--text-base);
-      color: var(--zinc-500);
+      color: var(--warm-500);
       animation: fade-up 0.4s ease 0.2s both;
     }
 
-    /* Form fade out */
     .waitlist-form.fade-out {
       animation: fade-out 0.3s ease forwards;
     }
@@ -395,7 +403,6 @@
       to { stroke-dashoffset: 0; }
     }
 
-    /* Success fade away */
     .waitlist-success.fade-away {
       animation: fade-down 0.6s ease forwards;
     }
@@ -404,18 +411,17 @@
       to { opacity: 0; transform: translateY(4px); }
     }
 
-    /* Pink tint pulse on body */
-    @keyframes pink-tint {
-      0% { background-color: var(--zinc-50); }
-      15% { background-color: #fdf2f8; }
-      100% { background-color: var(--zinc-50); }
+    /* Warm tint pulse on signup */
+    @keyframes warm-tint {
+      0% { background-color: var(--warm-50); }
+      15% { background-color: #f5ede6; }
+      100% { background-color: var(--warm-50); }
     }
 
     body.pink-pulse {
-      animation: pink-tint 3s ease forwards;
+      animation: warm-tint 3s ease forwards;
     }
 
-    /* Confetti canvas */
     #confetti-canvas {
       position: fixed;
       top: 0;
@@ -427,22 +433,54 @@
     }
 
     /* ============================================
-       Brand Values (below the card)
+       Values Strip
        ============================================ */
     .values {
       display: flex;
       justify-content: center;
       gap: var(--space-8);
-      margin-top: var(--space-8);
+      margin-bottom: var(--space-12);
       padding: 0 var(--space-6);
     }
 
     .values__item {
       font-weight: 400;
       font-size: var(--text-xs);
-      color: var(--zinc-400);
-      letter-spacing: 0.05em;
+      color: var(--warm-400);
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    /* ============================================
+       Who It's For
+       ============================================ */
+    .who-section {
+      margin-bottom: var(--space-16);
+    }
+
+    .who-section__title {
+      font-weight: 500;
+      font-size: var(--text-xs);
+      color: var(--warm-400);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+    }
+
+    .who-section__body {
+      font-weight: 400;
+      font-size: var(--text-lg);
+      color: var(--warm-600);
+      line-height: 1.75;
+    }
+
+    .who-section__body + .who-section__body {
+      margin-top: var(--space-5);
+    }
+
+    .who-section__body--closing {
+      font-style: italic;
+      color: var(--warm-700);
     }
 
     /* ============================================
@@ -450,13 +488,19 @@
        ============================================ */
     .site-footer {
       margin-top: auto;
-      padding-top: var(--space-8);
+      padding-top: var(--space-10);
       text-align: center;
     }
 
     .footer-copy {
       font-size: var(--text-xs);
-      color: var(--zinc-400);
+      color: var(--warm-400);
+    }
+
+    .footer-address {
+      font-size: var(--text-xs);
+      color: var(--warm-300);
+      margin-top: var(--space-1);
     }
 
     /* ============================================
@@ -464,20 +508,29 @@
        ============================================ */
     @media (max-width: 640px) {
       .page {
-        padding: var(--space-10) 0 var(--space-8);
+        padding: var(--space-10) var(--space-5) var(--space-8);
       }
 
       .logo {
-        width: 130px;
+        width: 120px;
+        margin-bottom: var(--space-10);
+      }
+
+      .hero-headline {
+        font-size: var(--text-xl);
         margin-bottom: var(--space-8);
       }
 
-      .hero-card {
-        padding: var(--space-8) var(--space-6);
+      .story {
+        margin-bottom: var(--space-10);
       }
 
-      .hero-card__tagline {
-        font-size: var(--text-xl);
+      .story__paragraph {
+        font-size: var(--text-base);
+      }
+
+      .waitlist-section {
+        margin-bottom: var(--space-10);
       }
 
       .waitlist-form {
@@ -487,8 +540,16 @@
       .values {
         gap: var(--space-4);
         flex-wrap: wrap;
+        margin-bottom: var(--space-10);
       }
 
+      .who-section {
+        margin-bottom: var(--space-10);
+      }
+
+      .who-section__body {
+        font-size: var(--text-base);
+      }
     }
 
     /* ============================================
@@ -513,7 +574,7 @@
     <!-- Logo -->
     <div class="logo" role="img" aria-label="Umpra logo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 767.75 183.32">
-        <defs><style>.umpra-fill { fill: #18181b; }</style></defs>
+        <defs><style>.umpra-fill { fill: #2c2825; }</style></defs>
         <g>
           <path class="umpra-fill" d="M264.02,36.58v55.45c0,6.02-1.15,10.4-3.42,13.15-2.28,2.75-5.34,4.12-9.24,4.12-8.3,0-12.45-5.36-12.45-16.06v-56.66h-34.76v63.88c0,12.45,3.16,22.01,9.44,28.63,6.3,6.62,14.8,9.95,25.53,9.95,5.34,0,10.14-1.19,14.35-3.52,4.23-2.35,7.81-5.66,10.76-9.95v11.46h33.95V36.58h-34.16Z"/>
           <path class="umpra-fill" d="M453.47,44.62c-6.02-6.7-14.73-10.05-26.11-10.05-6.17,0-11.76,1.37-16.78,4.12-5.02,2.75-9.09,6.6-12.15,11.55-5.49-10.44-15.01-15.67-28.54-15.67-5.62,0-10.72,1.2-15.27,3.61-4.55,2.43-8.37,5.91-11.44,10.46v-12.06h-33.95v100.45h34.14v-55.25c0-6.02,1.19-10.48,3.52-13.36,2.35-2.88,5.46-4.33,9.35-4.33,4.29,0,7.39,1.41,9.35,4.21,1.94,2.82,2.9,6.83,2.9,12.06v56.66h34.56v-55.25c0-6.02,1.15-10.48,3.42-13.36,2.28-2.88,5.36-4.33,9.24-4.33,4.42,0,7.56,1.41,9.44,4.21,1.88,2.82,2.82,6.83,2.82,12.06v56.66h34.56v-64.09c0-12.19-3.03-21.63-9.05-28.33Z"/>
@@ -530,41 +591,24 @@
       </svg>
     </div>
 
-    <!-- Hero Card -->
-      <div class="hero-card">
-        <h1 class="hero-card__tagline">Your everyday,<br>on your terms.</h1>
-        <p class="hero-card__teaser">Something thoughtful is taking shape. A wellness brand designed around the small daily moments that matter — and making them yours.</p>
+    <!-- Headline -->
+    <h1 class="hero-headline">Your everyday,<br>on your terms.</h1>
 
-        <form id="waitlist-form" class="waitlist-form" novalidate>
-          <input
-            type="email"
-            id="email-input"
-            class="waitlist-form__input"
-            placeholder="you@example.com"
-            autocomplete="email"
-            required
-            aria-label="Email address"
-            aria-describedby="error-msg"
-          >
-          <button type="submit" id="submit-btn" class="waitlist-form__btn">
-            <span class="btn-text">Join Waitlist</span>
-          </button>
-        </form>
-        <p id="error-msg" class="waitlist-form__error" hidden aria-live="polite"></p>
+    <!-- Story -->
+    <div class="story content-col">
+      <p class="story__paragraph">A surgeon watched her patients struggle with the simplest daily routines — brushing their teeth, holding a spoon, gripping a pen. Not because they lacked the will, but because nothing was designed for their hands.</p>
+      <p class="story__paragraph story__paragraph--emphasis">So she built something that was.</p>
+      <p class="story__paragraph">Umpra is a wellness product designed to give people with limited grip strength the ability to take care of themselves — independently, comfortably, and with dignity. Clinically tested with 40 patients. No bulky equipment. No complicated setups. Just a quiet, thoughtful solution for the moments that matter most.</p>
+    </div>
 
-        <div id="success-msg" class="waitlist-success" hidden>
-          <div class="waitlist-success__check">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="check-path" d="M5 13l4 4L19 7"/></svg>
-          </div>
-          <p class="waitlist-success__text">You're on the waitlist, we'll keep you posted with new updates on Umpra!</p>
-        </div>
+    <!-- Who It's For -->
+    <div class="who-section content-col">
+      <p class="who-section__title">Who It's For</p>
+      <p class="who-section__body">Umpra is for anyone who wants to hold onto their daily routine — stroke survivors regaining movement, grandparents maintaining their independence, children building motor skills, and anyone living with arthritis or limited hand mobility.</p>
+      <p class="who-section__body who-section__body--closing">It's also for the people who care for them.</p>
+    </div>
 
-        <noscript>
-          <p style="font-size: var(--text-sm); color: var(--zinc-500); margin-top: var(--space-4);">Please enable JavaScript to join the waitlist.</p>
-        </noscript>
-      </div>
-
-    <!-- Brand Values -->
+    <!-- Values -->
     <div class="values" aria-label="Brand values">
       <span class="values__item">Independence</span>
       <span class="values__item">Dignity</span>
@@ -572,8 +616,44 @@
       <span class="values__item">Simplicity</span>
     </div>
 
+    <!-- Waitlist -->
+    <div class="waitlist-section content-col">
+      <p class="waitlist-section__label">Join the Waitlist — Be the first to know when Umpra launches.</p>
+      <form id="waitlist-form" class="waitlist-form" novalidate>
+        <input
+          type="email"
+          id="email-input"
+          class="waitlist-form__input"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+          aria-label="Email address"
+          aria-describedby="error-msg"
+        >
+        <button type="submit" id="submit-btn" class="waitlist-form__btn">
+          <span class="btn-text">Join Waitlist</span>
+        </button>
+      </form>
+      <p id="error-msg" class="waitlist-form__error" hidden aria-live="polite"></p>
+      <p class="waitlist-form__consent">By signing up, you agree to receive occasional email updates about Umpra. No spam, ever. You can unsubscribe at any time.</p>
+
+      <div id="success-msg" class="waitlist-success" hidden>
+        <div class="waitlist-success__check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="check-path" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <p class="waitlist-success__text">You're on the waitlist — we'll keep you posted.</p>
+      </div>
+
+      <noscript>
+        <p style="font-size: var(--text-sm); color: var(--warm-500); margin-top: var(--space-4);">Please enable JavaScript to join the waitlist.</p>
+      </noscript>
+    </div>
+
+    <!-- Footer -->
     <footer class="site-footer">
-      <p class="footer-copy">&copy; 2026 Umpra</p>
+      <p class="footer-copy">&copy; 2026 Umpra &middot; A product by Umsii LLC</p>
+      <!-- CAN-SPAM requires a physical mailing address -->
+      <p class="footer-address">Umsii LLC &middot; Mesa, Arizona, US</p>
     </footer>
 
   </main>
@@ -581,8 +661,6 @@
   <script>
     (function () {
       var WAITLIST_ENDPOINT = "https://script.google.com/macros/s/AKfycbxtZDlGWAJ20ODq8Cmc9_J_DWGvPzJPL5wSuh88tgKSQajM2Way0-k2QzI3BtP4OkS0/exec";
-      // ^^^ Replace with your Google Apps Script web app URL
-      // See README.md for setup instructions
 
       var form = document.getElementById('waitlist-form');
       var emailInput = document.getElementById('email-input');
@@ -642,7 +720,6 @@
             successMsg.hidden = false;
             launchConfetti();
 
-            // Fade away success message after 12 seconds
             setTimeout(function () {
               successMsg.classList.add('fade-away');
               setTimeout(function () {
@@ -660,7 +737,7 @@
         if (!errorMsg.hidden) clearError();
       });
 
-      // Confetti
+      // Confetti — warm palette
       function launchConfetti() {
         var canvas = document.createElement('canvas');
         canvas.id = 'confetti-canvas';
@@ -670,7 +747,7 @@
         canvas.height = window.innerHeight;
 
         var pieces = [];
-        var colors = ['#18181b', '#71717a', '#a1a1aa', '#d4d4d8', '#e4e4e7'];
+        var colors = ['#2c2825', '#8a7e76', '#b5aca4', '#d4cec8', '#8b6d54'];
         var total = 80;
 
         for (var i = 0; i < total; i++) {
